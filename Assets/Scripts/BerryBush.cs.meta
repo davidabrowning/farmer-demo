@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 43197eb088f806d4c85a8ca0e7c24ad8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - InGameCanvas: {instanceID: 0}
+  - BerrySprite: {fileID: 21300000, guid: 30a003aad992a4844a3ed50705be9357, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

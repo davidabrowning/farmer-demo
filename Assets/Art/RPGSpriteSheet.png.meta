@@ -1,0 +1,1186 @@
+fileFormatVersion: 2
+guid: 6467f9f6dade1014eb7e08da466a1351
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1917284429709986693
+    second: RPGSpriteSheet_0
+  - first:
+      213: -644771444646300785
+    second: RPGSpriteSheet_1
+  - first:
+      213: 3828637366060400770
+    second: RPGSpriteSheet_2
+  - first:
+      213: 6565009662944334122
+    second: RPGSpriteSheet_3
+  - first:
+      213: 7845359922600364717
+    second: RPGSpriteSheet_4
+  - first:
+      213: -9017776856641515120
+    second: RPGSpriteSheet_5
+  - first:
+      213: -5913504540891099072
+    second: RPGSpriteSheet_6
+  - first:
+      213: 3766915791863077331
+    second: RPGSpriteSheet_7
+  - first:
+      213: -5479516082656052123
+    second: RPGSpriteSheet_8
+  - first:
+      213: -7648254168241110536
+    second: RPGSpriteSheet_9
+  - first:
+      213: 8221475780427264
+    second: RPGSpriteSheet_10
+  - first:
+      213: 7904195734855998656
+    second: RPGSpriteSheet_11
+  - first:
+      213: 3374625087668596395
+    second: RPGSpriteSheet_12
+  - first:
+      213: -6263509698183250238
+    second: RPGSpriteSheet_13
+  - first:
+      213: 5613118233987944206
+    second: RPGSpriteSheet_14
+  - first:
+      213: 1331833817459529845
+    second: RPGSpriteSheet_15
+  - first:
+      213: -4599633392600758525
+    second: RPGSpriteSheet_16
+  - first:
+      213: -7185917848382540563
+    second: RPGSpriteSheet_17
+  - first:
+      213: -8207414636883939701
+    second: RPGSpriteSheet_18
+  - first:
+      213: -1264168307403236593
+    second: RPGSpriteSheet_19
+  - first:
+      213: -2226033067602631449
+    second: RPGSpriteSheet_20
+  - first:
+      213: -1141369166012139796
+    second: RPGSpriteSheet_21
+  - first:
+      213: 5280641420477446548
+    second: RPGSpriteSheet_22
+  - first:
+      213: -8562326450823929050
+    second: RPGSpriteSheet_23
+  - first:
+      213: 5926216183135489392
+    second: RPGSpriteSheet_24
+  - first:
+      213: -2778780425812995802
+    second: RPGSpriteSheet_25
+  - first:
+      213: 8549094323236019623
+    second: RPGSpriteSheet_26
+  - first:
+      213: -8238502388902433658
+    second: RPGSpriteSheet_27
+  - first:
+      213: -3863344671038925873
+    second: RPGSpriteSheet_28
+  - first:
+      213: 6161814342625246998
+    second: RPGSpriteSheet_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RPGSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 802
+        width: 1023
+        height: 728
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830493666d1bf0e44b0a1aa66b2b8f1d
+      internalID: -1531919956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 1421
+        width: 18
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceafc5b1a886dfc45b703888dfb89eb2
+      internalID: -1360885326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 1416
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b31e656ceae64a45b8ec4ceffca68a2
+      internalID: -280336503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1416
+        width: 68
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73156a9bf422d9146bea702c4a4e6e2b
+      internalID: 429147454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 1416
+        width: 15
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e072a9716e429f74d82a5c2d558cc707
+      internalID: -1522285268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle01
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1128
+        width: 170
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95dc1e13234dd084eb88cc47748578f6
+      internalID: 40774582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 1354
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b2c6e43d7a4eb34289e2982b009eae5
+      internalID: -2025603330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle02
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 1128
+        width: 170
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b578f43f99c319429e3ff8329f29900
+      internalID: 992548507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1354
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd135d77840cc8d47903ce827f722621
+      internalID: 362407995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 1354
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bccb1c27c8f482a468aad1ccb14c5be9
+      internalID: -601993098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1128
+        width: 166
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61d10d9a4baee2747b44e6449fa516c8
+      internalID: 1309473384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 1354
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29db64eca9df93c4c8cffc40886ce6d6
+      internalID: -1431924988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 1354
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07b5c280e56a1c6428cd4a8cbf2c6a82
+      internalID: -1450448257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1278
+        width: 4
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85806c97ab94b884f84989b74a791e1f
+      internalID: -1366404235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 1040
+        width: 76
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db8c722d1c0ab7f46bd942061fefecf1
+      internalID: -1328626681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1040
+        width: 49
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846782ded4d40db4e95353d90a907158
+      internalID: -271781997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1040
+        width: 33
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8e7a5579c831a4aa0733f7e64d0d5a
+      internalID: 1333328955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 1041
+        width: 42
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685bf70ebbd5707408849fc5d1a985cc
+      internalID: -241698400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkLeft01
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 752
+        width: 163
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c441c47b5248a6f48a6f0b84df1e7ee5
+      internalID: 197345876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkLeft02
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 732
+        width: 174
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9f751904c99244fae664ca1fb203ad
+      internalID: 247282582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 752
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df5f1da4eeec9d45adcde40e0a40639
+      internalID: -95581658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkRight01
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 752
+        width: 181
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa616904d2dc2749a6a8c2a45974536
+      internalID: 1840527384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkRight02
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 752
+        width: 186
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8314c4bdbc95ec847bf382c323773471
+      internalID: -1552568590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkLeft03
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 398
+        width: 268
+        height: 338
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1456945a184d94040b8b80c4440451b2
+      internalID: 526747960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkLeft04
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 416
+        width: 280
+        height: 315
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b685fc543fc5240b127093909c38b4
+      internalID: 812465904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 547
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f18249d7b2030e49ac7c928399f0392
+      internalID: 1511416818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkRight03
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 452
+        width: 193
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c46ddcdc3b3194183ca880869d6996
+      internalID: 24796598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkRight04
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 460
+        width: 209
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e38b75356fdec44862867b95e35449
+      internalID: 145457339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 477
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ed586b4d29c534285ad30f9ab3e79d
+      internalID: 2145430060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 477
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaafc2047a9ccd249bd4aa8d10f75b6f
+      internalID: -592571623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 241
+        width: 177
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab01885ef781d6b47989c00293db403c
+      internalID: 1896425375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 240
+        width: 266
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c5f237857e3e641a482529ebec9d3e
+      internalID: -1939001808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 1
+        width: 265
+        height: 438
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a454a173c8ca9c46ab793fa38fcff6d
+      internalID: -1371714321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 426
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf33f15a5486c334db8ae28b54f7b8de
+      internalID: 1203645830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 134
+        width: 227
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdabd4deeedab0948b1d5c2d8b0d2f1a
+      internalID: 1391213122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 419
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ebbce22be541f441b42e4f4d032a13f
+      internalID: 305657188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 416
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f156acbb6a5bb14dbe668d0e9b8ec73
+      internalID: 1217892004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 9
+        width: 205
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fbb845e29538814ca9b493fd0bc6821
+      internalID: -1489393994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1
+        width: 421
+        height: 226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b031049cf89ea4e870d6a2f55f917f
+      internalID: -397095602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 61
+        width: 156
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854519452a4141546a990b016fcf5c44
+      internalID: 267301586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 1
+        width: 141
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1cdbd9407ea83a4aa53d92a324325c9
+      internalID: 703822835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPGSpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 9
+        width: 252
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 951eb4283ff6bec41a79515905a77499
+      internalID: -616732285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: cfa84e985886c5343a13c34bbce4cdae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Idle01: 40774582
+      Idle02: 992548507
+      RPGSpriteSheet_0: -1531919956
+      RPGSpriteSheet_1: -1360885326
+      RPGSpriteSheet_10: 1309473384
+      RPGSpriteSheet_11: -1431924988
+      RPGSpriteSheet_12: -1450448257
+      RPGSpriteSheet_13: -1366404235
+      RPGSpriteSheet_14: -1328626681
+      RPGSpriteSheet_15: -271781997
+      RPGSpriteSheet_16: 1333328955
+      RPGSpriteSheet_17: -241698400
+      RPGSpriteSheet_2: -280336503
+      RPGSpriteSheet_20: -95581658
+      RPGSpriteSheet_25: 1511416818
+      RPGSpriteSheet_28: 2145430060
+      RPGSpriteSheet_29: -592571623
+      RPGSpriteSheet_3: 429147454
+      RPGSpriteSheet_30: 1896425375
+      RPGSpriteSheet_31: -1939001808
+      RPGSpriteSheet_32: -1371714321
+      RPGSpriteSheet_33: 1203645830
+      RPGSpriteSheet_34: 1391213122
+      RPGSpriteSheet_35: 305657188
+      RPGSpriteSheet_36: 1217892004
+      RPGSpriteSheet_37: -1489393994
+      RPGSpriteSheet_38: -397095602
+      RPGSpriteSheet_39: 267301586
+      RPGSpriteSheet_4: -1522285268
+      RPGSpriteSheet_40: 703822835
+      RPGSpriteSheet_41: -616732285
+      RPGSpriteSheet_6: -2025603330
+      RPGSpriteSheet_8: 362407995
+      RPGSpriteSheet_9: -601993098
+      WalkLeft01: 197345876
+      WalkLeft02: 247282582
+      WalkLeft03: 526747960
+      WalkLeft04: 812465904
+      WalkRight01: 1840527384
+      WalkRight02: -1552568590
+      WalkRight03: 24796598
+      WalkRight04: 145457339
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
