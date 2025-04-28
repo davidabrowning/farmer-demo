@@ -1,28 +1,28 @@
 using Assets.Scripts;
 using UnityEngine;
 
-public class TileLayerController : MonoBehaviour
+public class TileBuilderController : MonoBehaviour
 {
     public GameObject DirtBackground;
     public GameObject TreeBackground;
     public GameObject BushBackground;
     public GameObject WaterBackground;
 
-    public void PlaceTile(RegionType regionType, Vector2 coords)
+    public void PlaceTile(RegionTypeEnum regionType, Vector2 coords)
     {
         GameObject tile;
         switch (regionType)
         {
-            case RegionType.Tree:
+            case RegionTypeEnum.Tree:
                 tile = TreeBackground;
                 break;
-            case RegionType.Dirt:
+            case RegionTypeEnum.Dirt:
                 tile = DirtBackground;
                 break;
-            case RegionType.Bush:
+            case RegionTypeEnum.Bush:
                 tile = BushBackground;
                 break;
-            case RegionType.Water:
+            case RegionTypeEnum.Water:
                 tile = WaterBackground;
                 break;
             default:

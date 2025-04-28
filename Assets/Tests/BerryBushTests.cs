@@ -22,7 +22,7 @@ public class BerryBushTests
     [Test]
     public void BerryBush_InitialBerryCount_IsZero()
     {
-        var bush = new GameObject().AddComponent<BerryBush>();
+        var bush = new GameObject().AddComponent<BerryBushScript>();
 
         Assert.AreEqual(0f, bush.BerryCount);
     }

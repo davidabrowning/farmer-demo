@@ -2,7 +2,7 @@ using Assets.Scripts;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class RegionBuilderController : MonoBehaviour
+public class RegionBuilderScript : MonoBehaviour
 {
     public GameObject TileLayer;
     public GameObject TreeCreator;
@@ -10,28 +10,28 @@ public class RegionBuilderController : MonoBehaviour
     public GameObject BerryBushBuilder;
     private float RegionSize = 15f;
 
-    public void BuildRegion(Vector2 regionCoords, RegionType regionType)
+    public void BuildRegion(Vector2 regionCoords, RegionTypeEnum regionType)
     {
-        TileLayerController tileLayerController = TileLayer.GetComponent<TileLayerController>();
+        TileBuilderController tileLayerController = TileLayer.GetComponent<TileBuilderController>();
         float minX = regionCoords.x * RegionSize;
         float maxX = regionCoords.x * RegionSize + RegionSize - 1;
         float minY = regionCoords.y * RegionSize;
         float maxY = regionCoords.y * RegionSize + RegionSize - 1;
         switch (regionType)
         {
-            case RegionType.Bush:
-                BerryBushBuilderController berryBushBuilderController = BerryBushBuilder.GetComponent<BerryBushBuilderController>();
+            case RegionTypeEnum.Bush:
+                BerryBushBuilderScript berryBushBuilderController = BerryBushBuilder.GetComponent<BerryBushBuilderScript>();
                 berryBushBuilderController.CreateBerryBushes(new Vector2(minX, minY), new Vector2(maxX, maxY));
                 break;
-            case RegionType.Tree:
-                TreeCreatorController tcc = TreeCreator.GetComponent<TreeCreatorController>();
+            case RegionTypeEnum.Tree:
+                TreeBuilderScript tcc = TreeCreator.GetComponent<TreeBuilderScript>();
                 tcc.CreateTree(new Vector2(minX, minY), new Vector2(maxX, maxY));
-                TwigCreator twigCreator = TwigCreator.GetComponent<TwigCreator>();
+                TwigBuilderScript twigCreator = TwigCreator.GetComponent<TwigBuilderScript>();
                 twigCreator.CreateTwigs(new Vector2(minX, minY), new Vector2(maxX, maxY));
                 break;
-            case RegionType.Dirt:
+            case RegionTypeEnum.Dirt:
                 break;
-            case RegionType.Water:
+            case RegionTypeEnum.Water:
                 break;
             default:
                 break;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
-    public enum RegionType
+    public enum RegionTypeEnum
     {
         Water = 0,
         Dirt = 1,

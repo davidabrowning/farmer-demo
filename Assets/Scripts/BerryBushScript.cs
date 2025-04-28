@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BerryBush : MonoBehaviour
+public class BerryBushScript : MonoBehaviour
 {
     public float BerryCount { get { return _berries.Count; } }
     public float MinBerryGrowthInterval = 2f;
@@ -19,7 +19,6 @@ public class BerryBush : MonoBehaviour
 
     public void Start()
     {
-        BerrySprite = Resources.Load<Sprite>("Berry");
         StartCoroutine(GrowBerries());
     }
 

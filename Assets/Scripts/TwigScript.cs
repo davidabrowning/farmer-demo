@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Twig : MonoBehaviour
+public class TwigScript : MonoBehaviour
 {
     public Sprite TwigSprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

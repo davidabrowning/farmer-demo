@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TreeCreatorController : MonoBehaviour
+public class TreeBuilderScript : MonoBehaviour
 {
     public GameObject TreePrefab;
     public void CreateTree(Vector2 bottomLeft, Vector2 topRight)

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TwigCreator : MonoBehaviour
+public class TwigBuilderScript : MonoBehaviour
 {
     public GameObject TwigPrefab;
     
