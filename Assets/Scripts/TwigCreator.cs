@@ -7,7 +7,6 @@ public class TwigCreator : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(CreateTwigs());
     }
 
     void Update()
@@ -15,15 +14,18 @@ public class TwigCreator : MonoBehaviour
         
     }
 
-    private IEnumerator CreateTwigs()
+    public void CreateTwigs(Vector2 bottomLeft, Vector2 topRight)
+    {
+        StartCoroutine(RunTwigCreation(bottomLeft, topRight));
+    }
+
+    private IEnumerator RunTwigCreation(Vector2 bottomLeft, Vector2 topRight)
     {
         while (true)
         {
             yield return new WaitForSeconds(2);
 
-            float spawnRange = 1;
-
-            Vector2 randomPosition = new Vector2(Random.Range(-2, 2), Random.Range(-2, 2));
+            Vector2 randomPosition = new Vector2(Random.Range(bottomLeft.x, topRight.x), Random.Range(bottomLeft.y, topRight.y));
             GameObject twig = Instantiate(TwigPrefab, randomPosition, Quaternion.identity);
             twig.transform.SetParent(transform);
         }

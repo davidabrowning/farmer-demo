@@ -51,6 +51,7 @@ public class BerryBush : MonoBehaviour
     {
         foreach (GameObject berry in _berries)
             Destroy(berry);
+        _berries.Clear();
         StartCoroutine(GrowBerries());
     }
 }

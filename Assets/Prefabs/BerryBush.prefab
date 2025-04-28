@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 51bc1b13b14342644ade94206e1b1a32, type: 3}
   m_Color: {r: 0.06607869, g: 0.3018868, b: 0, a: 1}
   m_FlipX: 0
@@ -149,5 +149,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinBerryGrowthInterval: 2
   MaxBerryGrowthInterval: 8
-  InGameCanvas: {fileID: 0}
   BerrySprite: {fileID: 21300000, guid: 30a003aad992a4844a3ed50705be9357, type: 3}
