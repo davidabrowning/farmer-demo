@@ -11,8 +11,14 @@ public class BerryBushBuilderController : MonoBehaviour
         {
             bushCounter++;
             Vector2 randomPosition = new Vector2(Random.Range(bottomLeft.x, topRight.x), Random.Range(bottomLeft.y, topRight.y));
+
             GameObject bush = Instantiate(BerryBushPrefab, randomPosition, Quaternion.identity);
             bush.transform.SetParent(transform);
+
+            SpriteRenderer renderer = bush.GetComponent<SpriteRenderer>();
+            Vector2 spriteSize = renderer.sprite.bounds.size;
+            bush.transform.localScale = new Vector3(1 / spriteSize.x, 1 / spriteSize.y, 1);
+
         }
     }
 }

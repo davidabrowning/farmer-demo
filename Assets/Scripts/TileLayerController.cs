@@ -1,27 +1,32 @@
+using Assets.Scripts;
 using UnityEngine;
 
 public class TileLayerController : MonoBehaviour
 {
-    public GameObject GrayBackground;
-    public GameObject GreenBackground;
-    public GameObject DarkGreenBackground;
+    public GameObject DirtBackground;
+    public GameObject TreeBackground;
+    public GameObject BushBackground;
+    public GameObject WaterBackground;
 
-    public void PlaceTile(string type, Vector2 coords)
+    public void PlaceTile(RegionType regionType, Vector2 coords)
     {
         GameObject tile;
-        switch (type)
+        switch (regionType)
         {
-            case "Green":
-                tile = GreenBackground;
+            case RegionType.Tree:
+                tile = TreeBackground;
                 break;
-            case "Gray":
-                tile = GrayBackground;
+            case RegionType.Dirt:
+                tile = DirtBackground;
                 break;
-            case "DarkGreen":
-                tile = DarkGreenBackground;
+            case RegionType.Bush:
+                tile = BushBackground;
+                break;
+            case RegionType.Water:
+                tile = WaterBackground;
                 break;
             default:
-                tile = GrayBackground;
+                tile = WaterBackground;
                 break;
         }
         PlaceBackgroundTile(tile, new Vector3(coords.x, coords.y, 0));
@@ -47,5 +52,9 @@ public class TileLayerController : MonoBehaviour
     void PlaceBackgroundTile(GameObject backgroundTile, Vector3 position)
     {
         GameObject area = Instantiate(backgroundTile, position, Quaternion.identity);
+
+        SpriteRenderer renderer = area.GetComponent<SpriteRenderer>();
+        Vector2 spriteSize = renderer.sprite.bounds.size;
+        area.transform.localScale = new Vector3(1 / spriteSize.x, 1 / spriteSize.y, 1);
     }
 }

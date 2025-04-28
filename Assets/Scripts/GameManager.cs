@@ -9,11 +9,6 @@ public class GameManager : MonoBehaviour
     public PlayerMovement Player;
     public TMP_Text BerryCountText;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         BerryCountText.text = $"Twigs: {Player.TwigInventory} | Berries: {Player.BerryInventory}";

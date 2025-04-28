@@ -381,7 +381,6 @@ MonoBehaviour:
   TreeCreator: {fileID: 1383271406}
   TwigCreator: {fileID: 935431984}
   BerryBushBuilder: {fileID: 2048294988}
-  RegionSize: 15
 --- !u!1 &500887657
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +528,7 @@ GameObject:
   - component: {fileID: 522034982}
   - component: {fileID: 522034983}
   m_Layer: 0
-  m_Name: TileLayer
+  m_Name: TileBuilder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,9 +561,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb693e3d8fec804599a87a4553496e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrayBackground: {fileID: 3316575775393188132, guid: 1e20333986740604893bdf6e5be2f978, type: 3}
-  GreenBackground: {fileID: 8060118588412448735, guid: b8aa278137179b2458766b4f1154bf3f, type: 3}
-  DarkGreenBackground: {fileID: 45471160705798524, guid: 993fa78bf2b00634294df225b461a4af, type: 3}
+  DirtBackground: {fileID: 5326225384849099660, guid: 5c2924f0df70b3e49b5a7a2c448f2c36, type: 3}
+  TreeBackground: {fileID: 7622090718588860857, guid: 564716eee492ad049a82b89034c290ae, type: 3}
+  BushBackground: {fileID: 8998009570999993947, guid: 9fca5b64be5b9454aa09a33f0da37392, type: 3}
+  WaterBackground: {fileID: 8669130883864399456, guid: 68a7e47890bb80e49a66610a33fe4fce, type: 3}
 --- !u!1 &787676332
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 935431985}
   - component: {fileID: 935431986}
   m_Layer: 0
-  m_Name: TwigCreator
+  m_Name: TwigBuilder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 1383271407}
   - component: {fileID: 1383271408}
   m_Layer: 0
-  m_Name: TreeCreator
+  m_Name: TreeBuilder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,7 +1373,7 @@ Transform:
   m_GameObject: {fileID: 1826375521}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 10, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

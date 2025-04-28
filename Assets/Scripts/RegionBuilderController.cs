@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -7,42 +8,30 @@ public class RegionBuilderController : MonoBehaviour
     public GameObject TreeCreator;
     public GameObject TwigCreator;
     public GameObject BerryBushBuilder;
-    public float RegionSize = 15f;
-    void Start()
-    {
-        
-    }
+    private float RegionSize = 15f;
 
-    void Update()
+    public void BuildRegion(Vector2 regionCoords, RegionType regionType)
     {
-        
-    }
-
-    public void BuildRegion(Vector2 regionCoords)
-    {
-        TileLayerController backgroundController = TileLayer.GetComponent<TileLayerController>();
+        TileLayerController tileLayerController = TileLayer.GetComponent<TileLayerController>();
         float minX = regionCoords.x * RegionSize;
         float maxX = regionCoords.x * RegionSize + RegionSize - 1;
         float minY = regionCoords.y * RegionSize;
         float maxY = regionCoords.y * RegionSize + RegionSize - 1;
-        float tileType = Random.Range(0, 2);
-        string tileBackgroundType = "";
-        switch (tileType)
+        switch (regionType)
         {
-            case 0:
-                tileBackgroundType = "Green";
+            case RegionType.Bush:
                 BerryBushBuilderController berryBushBuilderController = BerryBushBuilder.GetComponent<BerryBushBuilderController>();
                 berryBushBuilderController.CreateBerryBushes(new Vector2(minX, minY), new Vector2(maxX, maxY));
                 break;
-            case 1:
-                tileBackgroundType = "DarkGreen";
+            case RegionType.Tree:
                 TreeCreatorController tcc = TreeCreator.GetComponent<TreeCreatorController>();
                 tcc.CreateTree(new Vector2(minX, minY), new Vector2(maxX, maxY));
                 TwigCreator twigCreator = TwigCreator.GetComponent<TwigCreator>();
                 twigCreator.CreateTwigs(new Vector2(minX, minY), new Vector2(maxX, maxY));
                 break;
-            case 2:
-                tileBackgroundType = "Gray";
+            case RegionType.Dirt:
+                break;
+            case RegionType.Water:
                 break;
             default:
                 break;
@@ -51,7 +40,7 @@ public class RegionBuilderController : MonoBehaviour
         {
             for (float y = minY; y <= maxY; y++)
             {
-                backgroundController.PlaceTile(tileBackgroundType, new Vector2(x, y));
+                tileLayerController.PlaceTile(regionType, new Vector2(x, y));
             }
         }
     }
