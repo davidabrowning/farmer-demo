@@ -18,4 +18,11 @@ public class UIControllerScript : MonoBehaviour
     {
         InstructionsText.text = instructionsText;
     }
+    public void ToggleMenuSection(GameObject menuSection)
+    {
+        if (menuSection.activeSelf)
+            menuSection.SetActive(false);
+        else
+            menuSection.SetActive(true);
+    }
 }

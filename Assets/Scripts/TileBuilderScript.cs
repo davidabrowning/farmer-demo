@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TileBuilderController : MonoBehaviour
 {
+    public GameObject TileFolder;
     public GameObject DirtBackground;
     public GameObject TreeBackground;
     public GameObject BushBackground;
@@ -56,5 +57,6 @@ public class TileBuilderController : MonoBehaviour
         SpriteRenderer renderer = area.GetComponent<SpriteRenderer>();
         Vector2 spriteSize = renderer.sprite.bounds.size;
         area.transform.localScale = new Vector3(1 / spriteSize.x, 1 / spriteSize.y, 1);
+        area.transform.SetParent(TileFolder.transform);
     }
 }
