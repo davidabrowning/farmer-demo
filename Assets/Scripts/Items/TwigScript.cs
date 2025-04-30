@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Items
 {
-    public class TwigScript : MonoBehaviour
+    public class TwigScript : ItemBase
     {
         public Sprite TwigSprite;
     }

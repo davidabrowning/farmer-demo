@@ -14,17 +14,19 @@ namespace Assets.Scripts.Grid
             float maxX = regionCoords.x * RegionSize + RegionSize - 1;
             float minY = regionCoords.y * RegionSize;
             float maxY = regionCoords.y * RegionSize + RegionSize - 1;
+            Vector2 bottomLeft = new Vector2(minX, minY);
+            Vector2 topRight = new Vector2(maxX, maxY);
             switch (regionType)
             {
                 case RegionTypeEnum.Bush:
-                    BerryBushBuilderScript.Instance.CreateBerryBushes(new Vector2(minX, minY), new Vector2(maxX, maxY));
+                    BerryBushBuilderScript.Instance.CreateBerryBushes(bottomLeft, topRight);
                     break;
                 case RegionTypeEnum.Tree:
-                    TreeBuilderScript.Instance.CreateTree(new Vector2(minX, minY), new Vector2(maxX, maxY));
-                    TwigBuilderScript.Instance.CreateTwigs(new Vector2(minX, minY), new Vector2(maxX, maxY));
+                    //TreeBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtTree);
+                    TwigBuilderScript.Instance.CreateTwigs(bottomLeft, topRight);
                     break;
                 case RegionTypeEnum.Dirt:
-                    WorkBenchBuilderScript.Instance.CreateWorkBench(new Vector2(minX, minY), new Vector2(maxX, maxY));
+                    WorkBenchBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtBench);
                     break;
                 case RegionTypeEnum.Water:
                     break;

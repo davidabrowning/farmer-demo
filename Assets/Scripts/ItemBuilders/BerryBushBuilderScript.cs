@@ -7,6 +7,7 @@ namespace Assets.Scripts.ItemBuilders
 {
     public class BerryBushBuilderScript : ItemBuilderBase<BerryBushBuilderScript>
     {
+        public override Vector2Int Size { get { return new Vector2Int(1, 1); } }
         public void CreateBerryBushes(Vector2 bottomLeft, Vector2 topRight)
         {
             float bushCounter = 0;
@@ -23,7 +24,7 @@ namespace Assets.Scripts.ItemBuilders
 
                 GameObject bush = Instantiate(Prefab, new Vector3(randomLocation.x, randomLocation.y, 1), Quaternion.identity);
                 bush.transform.parent = ParentObject;
-                GridManagerScript.Instance.TryPlaceObject(randomLocation, bush);
+                GridManagerScript.Instance.AddObject(bush);
             }
         }
     }

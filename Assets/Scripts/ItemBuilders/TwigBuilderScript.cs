@@ -7,6 +7,7 @@ namespace Assets.Scripts.ItemBuilders
 {
     public class TwigBuilderScript : ItemBuilderBase<TwigBuilderScript>
     {
+        public override Vector2Int Size { get { return new Vector2Int(1, 1); } }
         public void CreateTwigs(Vector2 bottomLeft, Vector2 topRight)
         {
             StartCoroutine(RunTwigCreation(bottomLeft, topRight));
@@ -28,7 +29,7 @@ namespace Assets.Scripts.ItemBuilders
 
                 GameObject twig = Instantiate(Prefab, new Vector3(randomLocation.x, randomLocation.y, 1), Quaternion.identity);
                 twig.transform.SetParent(transform);
-                GridManagerScript.Instance.TryPlaceObject(randomLocation, twig);
+                GridManagerScript.Instance.AddObject(twig);
             }
         }
     }

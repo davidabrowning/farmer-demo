@@ -56,8 +56,8 @@ namespace Assets.Scripts.Grid
             Vector2 spriteSize = renderer.sprite.bounds.size;
             area.transform.localScale = new Vector3(1 / spriteSize.x, 1 / spriteSize.y, 1);
             area.transform.SetParent(TileFolder.transform);
-            //if ((position.x + position.y) % 2 == 0)
-            //    renderer.color = Color.gray;
+            if ((position.x + position.y) % 2 == 0)
+                renderer.color = Color.gray;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Items
 {
-    public class BerryBushScript : MonoBehaviour
+    public class BerryBushScript : ItemBase
     {
         public float BerryCount = 0f;
         public float MinBerryGrowthInterval = 2f;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Items
 {
-    public class WorkBenchScript : MonoBehaviour
+    public class WorkBenchScript : ItemBase
     {
     }
 }

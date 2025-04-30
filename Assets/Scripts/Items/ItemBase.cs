@@ -10,7 +10,5 @@ namespace Assets.Scripts.Items
         public Vector2Int Size;
         public int ClockwiseRotationDegrees;
         public List<Vector2Int> OccupiedTiles;
-
-
     }
 }

@@ -1,30 +1,40 @@
 using Assets.Scripts.Core;
+using Assets.Scripts.Items;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Grid
 {
     public class GridManagerScript : MonoBehaviourSingleton<GridManagerScript>
     {
-        private Dictionary<Vector2Int, GameObject> objectMap = new Dictionary<Vector2Int, GameObject>();
-        public bool TryPlaceObject(Vector2Int location, GameObject gameObject)
-        {
-            if (IsOccupied(location))
-                return false;
-
-            objectMap[location] = gameObject;
-            return true;
-        }
-
-        public GameObject GetObjectAt(Vector2Int cell)
-        {
-            objectMap.TryGetValue(cell, out var obj);
-            return obj;
-        }
-
+        private List<GameObject> placedObjects = new();
         public bool IsOccupied(Vector2Int cell)
         {
-            return objectMap.ContainsKey(cell);
+            return placedObjects
+                .Where(obj => obj != null)
+                .Select(obj => obj.GetComponent<ItemBase>())
+                .Where(item => item.OccupiedTiles.Contains(cell))
+                .Any();
+        }
+
+        public bool IsOccupied(List<Vector2Int> cells)
+        {
+            foreach (var cell in cells)
+                if (IsOccupied(cell))
+                    return true;
+            return false;
+        }
+
+        public void AddObject(GameObject gameObject)
+        {
+            placedObjects.Add(gameObject);
+        }
+
+        public void Remove(GameObject gameObject)
+        {
+            placedObjects.Remove(gameObject);
         }
     }
 }
