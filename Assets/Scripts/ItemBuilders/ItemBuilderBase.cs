@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Core;
 using Assets.Scripts.Grid;
+using Assets.Scripts.Items;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +61,9 @@ namespace Assets.Scripts.ItemBuilders
         {
             Vector2 visualCenter = CalculateVisualCenter(openTiles);
             GameObject obj = Instantiate(Prefab, visualCenter, Quaternion.identity);
+            obj.GetComponent<ItemBase>().AnchorPosition = openTiles.First();
+            obj.GetComponent<ItemBase>().Size = Size;
+            obj.GetComponent<ItemBase>().OccupiedTiles = openTiles;
             return obj;
         }
 

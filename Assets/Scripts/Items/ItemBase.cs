@@ -10,5 +10,7 @@ namespace Assets.Scripts.Items
         public Vector2Int Size;
         public int ClockwiseRotationDegrees;
         public List<Vector2Int> OccupiedTiles;
+        public Vector2Int BottomLeft { get { return AnchorPosition; } }
+        public Vector2Int TopRight { get { return AnchorPosition + Size - Vector2Int.one; } }
     }
 }

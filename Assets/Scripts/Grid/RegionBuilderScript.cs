@@ -23,8 +23,8 @@ namespace Assets.Scripts.Grid
                         BerryBushBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtBerryBush);
                     break;
                 case RegionTypeEnum.Tree:
-                    TreeBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtTree);
-                    TwigBuilderScript.Instance.CreateTwigs(bottomLeft, topRight);
+                    for (int i = 0; i < 3; i++)
+                        TreeBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtTree);
                     break;
                 case RegionTypeEnum.Dirt:
                     WorkBenchBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtBench);
