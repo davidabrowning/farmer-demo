@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets.Scripts.Items;
 using Assets.Tests;
 using NUnit.Framework;
 using UnityEngine;
