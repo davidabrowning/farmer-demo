@@ -19,10 +19,11 @@ namespace Assets.Scripts.Grid
             switch (regionType)
             {
                 case RegionTypeEnum.Bush:
-                    BerryBushBuilderScript.Instance.CreateBerryBushes(bottomLeft, topRight);
+                    for(int i = 0; i < 5; i++)
+                        BerryBushBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtBerryBush);
                     break;
                 case RegionTypeEnum.Tree:
-                    //TreeBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtTree);
+                    TreeBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtTree);
                     TwigBuilderScript.Instance.CreateTwigs(bottomLeft, topRight);
                     break;
                 case RegionTypeEnum.Dirt:

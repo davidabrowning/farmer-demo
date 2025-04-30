@@ -15,6 +15,7 @@ namespace Assets.Scripts.Grid
             return placedObjects
                 .Where(obj => obj != null)
                 .Select(obj => obj.GetComponent<ItemBase>())
+                .Where(item => item != null)
                 .Where(item => item.OccupiedTiles.Contains(cell))
                 .Any();
         }
