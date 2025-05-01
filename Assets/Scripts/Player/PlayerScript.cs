@@ -11,6 +11,7 @@ namespace FarmerDemo
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
+        private int _allTimeTwigsCollected = 0;
 
         private Rigidbody2D rb;
         private Vector2 movement;
@@ -52,6 +53,9 @@ namespace FarmerDemo
                 TwigInventory++;
                 if (TwigInventory >= 5)
                     UIControllerScript.Instance.UpdateInstructions("Craft a berry basket");
+                _allTimeTwigsCollected++;
+                if (_allTimeTwigsCollected == 1)
+                    DialogueManagerScript.Instance.ShowDialogue("Splendid! If we can collect 5 twigs we should be able to make a berry basket.");
             }
             if (collision.gameObject.CompareTag("WorkBench"))
             {
