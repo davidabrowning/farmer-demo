@@ -1,9 +1,7 @@
-using Assets.Scripts.Core;
-using Assets.Scripts.Grid;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.ItemBuilders
+namespace FarmerDemo
 {
     public class TwigBuilderScript : ItemBuilderBase<TwigBuilderScript>
     {

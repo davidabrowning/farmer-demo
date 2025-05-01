@@ -1,9 +1,8 @@
-using Assets.Scripts.ItemBuilders;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts.Items
+namespace FarmerDemo
 {
     public class TreeScript : ItemBase
     {

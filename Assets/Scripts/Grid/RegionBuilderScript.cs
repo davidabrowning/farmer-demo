@@ -1,8 +1,7 @@
-using Assets.Scripts.ItemBuilders;
-using Assets.Scripts.Core;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-namespace Assets.Scripts.Grid
+
+namespace FarmerDemo
 {
     public class RegionBuilderScript : MonoBehaviourSingleton<RegionBuilderScript>
     {

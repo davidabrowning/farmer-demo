@@ -1,10 +1,6 @@
-using Assets.Scripts.Core;
-using Assets.Scripts.Grid;
-using Assets.Scripts.Items;
-using Assets.Scripts.UI;
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace FarmerDemo
 {
     public class PlayerScript : MonoBehaviour
     {

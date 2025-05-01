@@ -1,8 +1,7 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Items
+namespace FarmerDemo
 {
     public abstract class ItemBase : MonoBehaviour
     {

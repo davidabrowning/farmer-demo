@@ -1,11 +1,7 @@
-using Assets.Scripts;
-using Assets.Scripts.Core;
-using Assets.Scripts.Grid;
-using Assets.Scripts.Player;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Scripts.UI
+namespace FarmerDemo
 {
     public class UIControllerScript : MonoBehaviourSingleton<UIControllerScript>
     {

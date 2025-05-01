@@ -1,13 +1,10 @@
-using Assets.Scripts.UI;
-using Assets.Scripts.Core;
-using Assets.Scripts.Player;
 using System.Collections;
 using System.Threading;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace FarmerDemo
 {
     public class GameManagerScript : MonoBehaviourSingleton<GameManagerScript>
     {
@@ -15,6 +12,8 @@ namespace Assets.Scripts.Core
         public GameObject UIController;
         private void Start()
         {
+            WorldBuilderScript.Instance.BuildInitialWorld();
+
             UIControllerScript.Instance.UpdateInstructions("Collect 5 twigs");
         }
     }

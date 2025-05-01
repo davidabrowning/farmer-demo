@@ -1,7 +1,6 @@
-using Assets.Scripts.Core;
 using UnityEngine;
 
-namespace Assets.Scripts.ItemBuilders
+namespace FarmerDemo
 {
     public class TreeBuilderScript : ItemBuilderBase<TreeBuilderScript>
     {
