@@ -12,11 +12,12 @@ namespace FarmerDemo
                 Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2Int tilePos = new Vector2Int((int)Mathf.Round(mouseWorld.x), (int)Mathf.Round(mouseWorld.y));
 
-                GridHighlighterScript.Instance.Highlight(tilePos);
+                if (!GridManagerScript.Instance.IsOccupied(tilePos))
+                    GridHighlighterScript.Instance.Highlight(tilePos);
 
                 if (Input.GetMouseButtonDown(0)) // left-click
                 {
-                    LabBuilderScript.Instance.TryBuildItem(tilePos, tilePos, out GameObject labObj);
+                    ItemBuilderScript.Instance.TryBuildItem(tilePos, tilePos, "LabBuilding", out GameObject labObj);
                 }
             }
         }

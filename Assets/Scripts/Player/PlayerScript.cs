@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class PlayerScript : MonoBehaviour
+    public class PlayerScript : MonoBehaviourSingleton<PlayerScript>
     {
         public float MoveSpeed = 5f;
         public float TwigInventory = 0f;
@@ -23,7 +23,6 @@ namespace FarmerDemo
             BasketWithBerriesVisual.SetActive(false);
         }
 
-        // Update is called once per frame
         void Update()
         {
             float moveX = Input.GetAxis("Horizontal");
@@ -35,6 +34,13 @@ namespace FarmerDemo
         void FixedUpdate()
         {
             rb.MovePosition(rb.position + movement * MoveSpeed * Time.fixedDeltaTime);
+        }
+
+        public Vector2Int? LocationInt()
+        {
+            if (rb == null)
+                return null;
+            return new Vector2Int((int)Mathf.Round(rb.position.x), (int)Mathf.Round(rb.position.y));
         }
 
         void OnCollisionEnter2D(Collision2D collision)

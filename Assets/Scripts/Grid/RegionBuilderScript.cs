@@ -35,14 +35,14 @@ namespace FarmerDemo
             {
                 case RegionTypeEnum.Bush:
                     for (int i = 0; i < 5; i++)
-                        BerryBushBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtBerryBush);
+                        ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "BerryBush", out GameObject builtBerryBush);
                     break;
                 case RegionTypeEnum.Tree:
                     for (int i = 0; i < 3; i++)
-                        TreeBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtTree);
+                        ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Tree", out GameObject builtTree);
                     break;
                 case RegionTypeEnum.Dirt:
-                    WorkBenchBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtBench);
+                    ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "WorkBench", out GameObject builtBench);
                     break;
                 case RegionTypeEnum.Water:
                     break;

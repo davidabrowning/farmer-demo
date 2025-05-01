@@ -6,16 +6,17 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public abstract class ItemBuilderBase<T> : MonoBehaviourSingleton<T> where T : MonoBehaviourSingleton<T>
+    public class ItemBuilderScript : MonoBehaviourSingleton<ItemBuilderScript>
     {
-        public GameObject Prefab;
+        private GameObject _prefab;
         public Transform ParentObject;
 
-        public bool TryBuildItem(Vector2 bottomLeft, Vector2 topRight, out GameObject obj)
+        public bool TryBuildItem(Vector2 bottomLeft, Vector2 topRight, string prefabName, out GameObject obj)
         {
             obj = null;
 
-            ItemPlacementLogic itemPlacementLogic = new ItemPlacementLogic(Prefab.GetComponent<ItemBase>().Size, GridManagerScript.Instance);
+            _prefab = Resources.Load<GameObject>("Prefabs/" + prefabName);
+            ItemPlacementLogic itemPlacementLogic = new ItemPlacementLogic(_prefab.GetComponent<ItemBase>().Size, GridManagerScript.Instance);
             if (!itemPlacementLogic.TryGetOpenTiles(bottomLeft, topRight, out List<Vector2Int> openTiles))
                 return false;
 
@@ -26,7 +27,7 @@ namespace FarmerDemo
 
         private GameObject InstantiateObject(List<Vector2Int> openTiles)
         {
-            GameObject obj = Instantiate(Prefab, new Vector2(), Quaternion.identity);
+            GameObject obj = Instantiate(_prefab, new Vector2(), Quaternion.identity);
             Vector2 visualCenter = CalculateVisualCenter(openTiles);
             obj.transform.position = visualCenter;
             obj.GetComponent<ItemBase>().AnchorPosition = openTiles.First();

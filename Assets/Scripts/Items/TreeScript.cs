@@ -17,7 +17,7 @@ namespace FarmerDemo
             while(true)
             {
                 yield return new WaitForSeconds(Random.Range(1, MaxTwigDelay));
-                TwigBuilderScript.Instance.TryBuildItem(BottomLeft - Vector2Int.one, TopRight + Vector2Int.one, out GameObject builtTwig);
+                ItemBuilderScript.Instance.TryBuildItem(BottomLeft - Vector2Int.one, TopRight + Vector2Int.one, "Twig", out GameObject builtTwig);
             }
         }
     }

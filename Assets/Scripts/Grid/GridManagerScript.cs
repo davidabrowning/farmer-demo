@@ -10,6 +10,8 @@ namespace FarmerDemo
         private List<GameObject> placedObjects = new();
         public bool IsOccupied(Vector2Int cell)
         {
+            if (PlayerScript.Instance.LocationInt() == cell)
+                    return true;
             return placedObjects
                 .Where(obj => obj != null)
                 .Select(obj => obj.GetComponent<ItemBase>())
