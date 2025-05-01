@@ -5,15 +5,23 @@ namespace FarmerDemo
 {
     public class UIControllerScript : MonoBehaviourSingleton<UIControllerScript>
     {
+        public GameObject TwigInventorySection;
         public TMP_Text TwigInventoryCountText;
+        public GameObject BerryInventorySection;
         public TMP_Text BerryInventoryCountText;
         public TMP_Text InstructionsText;
         public GameObject Player;
 
         private void Update()
         {
-            TwigInventoryCountText.text = Player.GetComponent<PlayerScript>().TwigInventory.ToString();
-            BerryInventoryCountText.text = Player.GetComponent<PlayerScript>().BerryInventory.ToString();
+            int twigs = (int)Player.GetComponent<PlayerScript>().TwigInventory;
+            int berries = (int)Player.GetComponent<PlayerScript>().BerryInventory;
+
+            TwigInventoryCountText.text = "Twigs: " + twigs;
+            BerryInventoryCountText.text = "Berries: " + berries;
+
+            TwigInventorySection.SetActive(twigs > 0);
+            BerryInventorySection.SetActive(berries > 0);
         }
         public void UpdateInstructions(string instructionsText)
         {
