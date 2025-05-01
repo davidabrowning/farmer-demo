@@ -5,20 +5,36 @@ namespace FarmerDemo
 {
     public class RegionBuilderScript : MonoBehaviourSingleton<RegionBuilderScript>
     {
-        private float RegionSize = 15f;
+        private int _regionSize = 15;
 
-        public void BuildRegion(Vector2 regionCoords, RegionTypeEnum regionType)
+        public void BuildRegion(Vector2Int regionCoords, RegionTypeEnum regionType)
         {
-            float minX = regionCoords.x * RegionSize;
-            float maxX = regionCoords.x * RegionSize + RegionSize - 1;
-            float minY = regionCoords.y * RegionSize;
-            float maxY = regionCoords.y * RegionSize + RegionSize - 1;
-            Vector2 bottomLeft = new Vector2(minX, minY);
-            Vector2 topRight = new Vector2(maxX, maxY);
+            Vector2Int bottomLeft = GetRegionBottomLeft(regionCoords);
+            Vector2Int topRight = GetRegionTopRight(regionCoords);
+            PlaceItems(bottomLeft, topRight, regionType);
+            PlaceTiles(bottomLeft, topRight, regionType);
+        }
+
+        private Vector2Int GetRegionBottomLeft(Vector2Int regionCoords)
+        {
+            int minX = regionCoords.x * _regionSize;
+            int minY = regionCoords.y * _regionSize;
+            return new Vector2Int(minX, minY);
+        }
+
+        private Vector2Int GetRegionTopRight(Vector2Int regionCoords)
+        {
+            int maxX = regionCoords.x * _regionSize + _regionSize - 1;
+            int maxY = regionCoords.y * _regionSize + _regionSize - 1;
+            return new Vector2Int(maxX, maxY);
+        }
+
+        private void PlaceItems(Vector2Int bottomLeft, Vector2Int topRight, RegionTypeEnum regionType)
+        {
             switch (regionType)
             {
                 case RegionTypeEnum.Bush:
-                    for(int i = 0; i < 5; i++)
+                    for (int i = 0; i < 5; i++)
                         BerryBushBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, out GameObject builtBerryBush);
                     break;
                 case RegionTypeEnum.Tree:
@@ -33,11 +49,15 @@ namespace FarmerDemo
                 default:
                     break;
             }
-            for (float x = minX; x <= maxX; x++)
+        }
+
+        private void PlaceTiles(Vector2Int bottomLeft, Vector2Int topRight, RegionTypeEnum regionType)
+        {
+            for (int x = bottomLeft.x; x <= topRight.x; x++)
             {
-                for (float y = minY; y <= maxY; y++)
+                for (int y = bottomLeft.y; y <= topRight.y; y++)
                 {
-                    TileBuilderScript.Instance.PlaceTile(regionType, new Vector2(x, y));
+                    TileBuilderScript.Instance.PlaceTile(regionType, new Vector2Int(x, y));
                 }
             }
         }
