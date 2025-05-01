@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Player
+namespace FarmerDemo
 {
     public class CameraScript : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace FarmerDemo
 {
     public abstract class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {

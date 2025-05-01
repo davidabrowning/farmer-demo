@@ -1,9 +1,7 @@
-using Assets.Scripts;
-using Assets.Scripts.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Grid
+namespace FarmerDemo
 {
     public class TileBuilderScript : MonoBehaviourSingleton<TileBuilderScript>
     {

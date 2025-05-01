@@ -1,6 +1,5 @@
 using System.Collections;
-using Assets.Scripts.Items;
-using Assets.Tests;
+using FarmerDemo;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;

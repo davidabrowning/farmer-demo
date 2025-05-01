@@ -1,11 +1,9 @@
-using Assets.Scripts.Core;
-using Assets.Scripts.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts.Grid
+namespace FarmerDemo
 {
     public class GridManagerScript : MonoBehaviourSingleton<GridManagerScript>
     {

@@ -1,8 +1,6 @@
-﻿using Assets.Scripts.Core;
-using Assets.Scripts.Grid;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.ItemBuilders
+namespace FarmerDemo
 {
     public class WorkBenchBuilderScript : ItemBuilderBase<WorkBenchBuilderScript>
     {

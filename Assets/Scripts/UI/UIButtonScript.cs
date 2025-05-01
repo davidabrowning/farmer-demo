@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.UI
+namespace FarmerDemo
 {
     public class UIButtonScript : MonoBehaviour
     {

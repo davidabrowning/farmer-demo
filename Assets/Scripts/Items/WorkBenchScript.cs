@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Items
+namespace FarmerDemo
 {
     public class WorkBenchScript : ItemBase
     {
