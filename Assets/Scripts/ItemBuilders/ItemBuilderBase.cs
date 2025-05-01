@@ -8,7 +8,6 @@ namespace FarmerDemo
 {
     public abstract class ItemBuilderBase<T> : MonoBehaviourSingleton<T> where T : MonoBehaviourSingleton<T>
     {
-        public abstract Vector2Int Size { get; }
         public GameObject Prefab;
         public Transform ParentObject;
 
@@ -16,7 +15,7 @@ namespace FarmerDemo
         {
             obj = null;
 
-            ItemPlacementLogic itemPlacementLogic = new ItemPlacementLogic(Size, GridManagerScript.Instance);
+            ItemPlacementLogic itemPlacementLogic = new ItemPlacementLogic(Prefab.GetComponent<ItemBase>().Size, GridManagerScript.Instance);
             if (!itemPlacementLogic.TryGetOpenTiles(bottomLeft, topRight, out List<Vector2Int> openTiles))
                 return false;
 
@@ -27,10 +26,10 @@ namespace FarmerDemo
 
         private GameObject InstantiateObject(List<Vector2Int> openTiles)
         {
+            GameObject obj = Instantiate(Prefab, new Vector2(), Quaternion.identity);
             Vector2 visualCenter = CalculateVisualCenter(openTiles);
-            GameObject obj = Instantiate(Prefab, visualCenter, Quaternion.identity);
+            obj.transform.position = visualCenter;
             obj.GetComponent<ItemBase>().AnchorPosition = openTiles.First();
-            obj.GetComponent<ItemBase>().Size = Size;
             obj.GetComponent<ItemBase>().OccupiedTiles = openTiles;
             return obj;
         }

@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f9a910042c0c4f98e3a808c8517df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TwigSprite: {fileID: 21300000, guid: e7e74373d5bc45843b3a932101def44e, type: 3}
+  AnchorPosition: {x: 0, y: 0}
+  Size: {x: 1, y: 1}
+  ClockwiseRotationDegrees: 0
+  OccupiedTiles: []
 --- !u!212 &4757210883874875763
 SpriteRenderer:
   m_ObjectHideFlags: 0

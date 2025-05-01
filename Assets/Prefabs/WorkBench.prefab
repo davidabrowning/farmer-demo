@@ -147,3 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af6f1204a4274042a2749f725e7e76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnchorPosition: {x: 0, y: 0}
+  Size: {x: 2, y: 1}
+  ClockwiseRotationDegrees: 0
+  OccupiedTiles: []
