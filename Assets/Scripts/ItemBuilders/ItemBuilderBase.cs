@@ -8,7 +8,7 @@ namespace FarmerDemo
 {
     public abstract class ItemBuilderBase<T> : MonoBehaviourSingleton<T> where T : MonoBehaviourSingleton<T>
     {
-        public abstract Vector2Int Size { get;  }
+        public abstract Vector2Int Size { get; }
         public GameObject Prefab;
         public Transform ParentObject;
 
