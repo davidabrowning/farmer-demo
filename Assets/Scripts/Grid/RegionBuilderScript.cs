@@ -36,6 +36,8 @@ namespace FarmerDemo
                 case RegionTypeEnum.Bush:
                     for (int i = 0; i < 5; i++)
                         ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "BerryBush", out GameObject builtBerryBush);
+                    for (int i = 0; i < 15; i++)
+                        ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Wheat", out GameObject builtBerryBush);
                     break;
                 case RegionTypeEnum.Tree:
                     for (int i = 0; i < 3; i++)
@@ -43,6 +45,8 @@ namespace FarmerDemo
                     break;
                 case RegionTypeEnum.Dirt:
                     ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "WorkBench", out GameObject builtBench);
+                    ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Stone", out GameObject builtStoneDeposit);
+                    ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Iron", out GameObject builtIronDeposit);
                     break;
                 case RegionTypeEnum.Water:
                     break;
