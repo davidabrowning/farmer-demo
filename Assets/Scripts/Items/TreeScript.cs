@@ -6,7 +6,7 @@ namespace FarmerDemo
 {
     public class TreeScript : ItemBase
     {
-        public const int MaxTwigDelay = 10;
+        public const int MaxTwigDelay = 100;
         public void Start()
         {
             StartCoroutine(DropTwigs());
@@ -19,6 +19,12 @@ namespace FarmerDemo
                 yield return new WaitForSeconds(Random.Range(1, MaxTwigDelay));
                 ItemBuilderScript.Instance.TryBuildItem(BottomLeft - Vector2Int.one, TopRight + Vector2Int.one, "Twig", out GameObject builtTwig);
             }
+        }
+
+        public void DropMaxTwigs()
+        {
+            for (int i = 0; i < 100; i++)
+                ItemBuilderScript.Instance.TryBuildItem(BottomLeft - Vector2Int.one, TopRight + Vector2Int.one, "Twig", out GameObject builtTwig);
         }
     }
 }

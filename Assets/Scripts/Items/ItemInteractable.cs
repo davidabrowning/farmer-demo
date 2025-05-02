@@ -20,10 +20,10 @@ namespace FarmerDemo {
             switch (actionId)
             {
                 case "shake_tree":
-                    Debug.Log("Shaking tree...");
+                    gameObject.GetComponent<TreeScript>().DropMaxTwigs();
                     break;
                 case "cut_tree":
-                    Debug.Log("Cutting down tree...");
+                    Destroy(gameObject);
                     break;
                 default:
                     Debug.Log("Unknown action.");

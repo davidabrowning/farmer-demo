@@ -8,41 +8,48 @@ namespace FarmerDemo
 {
     public class UIItemPopupMenu : MonoBehaviour
     {
-        public GameObject ButtonPrefab;
         public Transform ButtonContainer;
-        public Button CancelButton;
+        public GameObject ActionButtonPrefab;
+        public GameObject CancelButtonPrefab;
 
         public void Setup(List<ObjectAction> actions, Vector3 screenPos)
         {
             transform.position = screenPos;
+            ClearOldButtons();
+            AddActionButtons(actions);
+            AddCancelButton();
+        }
 
-            // Clear old buttons
+        private void ClearOldButtons()
+        {
             foreach (Transform child in ButtonContainer)
                 Destroy(child.gameObject);
+        }
 
-            // Add a button for each action
+        private void AddActionButtons(List<ObjectAction> actions)
+        {
             foreach (ObjectAction action in actions)
             {
-                GameObject buttonObject = Instantiate(ButtonPrefab, ButtonContainer);
+                GameObject buttonObject = Instantiate(ActionButtonPrefab, ButtonContainer);
                 Button button = buttonObject.GetComponent<Button>();
                 TMP_Text buttonText = buttonObject.GetComponentInChildren<TMP_Text>();
 
                 buttonText.text = action.ActionName;
-                button.onClick.AddListener(() => action.Target.Interact(action.ActionId)); // Maybe add a CloseMenu call here
+                button.onClick.AddListener(() => action.Target.Interact(action.ActionId));
+                button.onClick.AddListener(CloseMenu);
             }
-
-            // Add Cancel button
-            GameObject cancelButtonObject = Instantiate(ButtonPrefab, ButtonContainer);
-            Button cancelButton = cancelButtonObject.GetComponent<Button>();
-            TMP_Text cancelButtonText = cancelButtonObject.GetComponentInChildren<TMP_Text>();
-            cancelButtonText.text = "Cancel";
-            cancelButton.onClick.AddListener(CloseMenu);
-
-            CancelButton.onClick.RemoveAllListeners();
-            CancelButton.onClick.AddListener(CloseMenu);
         }
 
-        public void CloseMenu()
+        private void AddCancelButton()
+        {
+            GameObject cancelButtonObject = Instantiate(CancelButtonPrefab, ButtonContainer);
+            Button cancelButton = cancelButtonObject.GetComponent<Button>();
+            TMP_Text cancelButtonText = cancelButtonObject.GetComponentInChildren<TMP_Text>();
+
+            cancelButton.onClick.AddListener(CloseMenu);
+        }
+
+        private void CloseMenu()
         {
             Destroy(gameObject);
         }

@@ -163,6 +163,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f87ea716e12cc648a6d18ee938f3222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &20021190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20021191}
+  - component: {fileID: 20021192}
+  m_Layer: 0
+  m_Name: ClickedItemUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &20021191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20021190}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1302638705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &20021192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20021190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d8dbc664262f247ae1f16d91dcb0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuPrefab: {fileID: 3153520010406557374, guid: e121c86d12a0f664297928587dea45fa, type: 3}
 --- !u!1 &87175871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,6 +1949,7 @@ Transform:
   - {fileID: 679898618}
   - {fileID: 1052629429}
   - {fileID: 726701758}
+  - {fileID: 20021191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451850826
@@ -2003,9 +2049,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1461456294}
   - component: {fileID: 1461456295}
-  - component: {fileID: 1461456296}
   m_Layer: 0
-  m_Name: UIController
+  m_Name: InventoryUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2044,19 +2089,6 @@ MonoBehaviour:
   BerryInventoryCountText: {fileID: 326637150}
   InstructionsText: {fileID: 727690924}
   Player: {fileID: 1826375521}
---- !u!114 &1461456296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461456293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3d8dbc664262f247ae1f16d91dcb0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MenuPrefab: {fileID: 3153520010406557374, guid: e121c86d12a0f664297928587dea45fa, type: 3}
 --- !u!1 &1491059569
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2d34c3e8605014a972d520bb61060e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonPrefab: {fileID: 3981427300470758169, guid: 8bc378d17deb4aa4a98c78789ea777ca, type: 3}
   ButtonContainer: {fileID: 7615220244065380959}
-  CancelButton: {fileID: 7543893605495018657}
+  ActionButtonPrefab: {fileID: 3981427300470758169, guid: 8bc378d17deb4aa4a98c78789ea777ca, type: 3}
+  CancelButtonPrefab: {fileID: 5505488104412810553, guid: 00fe93e687de32745b5ea66042f0d252, type: 3}
 --- !u!1001 &8488273606702789142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,14 +236,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8366326570648661904, guid: 00fe93e687de32745b5ea66042f0d252, type: 3}
   m_PrefabInstance: {fileID: 8488273606702789142}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7543893605495018657 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2124903650014324407, guid: 00fe93e687de32745b5ea66042f0d252, type: 3}
-  m_PrefabInstance: {fileID: 8488273606702789142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
