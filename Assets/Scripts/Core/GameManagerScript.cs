@@ -14,7 +14,7 @@ namespace FarmerDemo
         {
             WorldBuilderScript.Instance.BuildInitialWorld();
 
-            UIControllerScript.Instance.UpdateInstructions("Collect 5 twigs");
+            InventoryMenuManagerScript.Instance.UpdateInstructions("Collect 5 twigs");
         }
     }
 }

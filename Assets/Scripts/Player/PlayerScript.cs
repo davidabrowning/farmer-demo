@@ -54,7 +54,7 @@ namespace FarmerDemo
                 Destroy(collision.gameObject);
                 AddToInventory(ResourceType.Twig, 1);
                 if (AmountInInventory(ResourceType.Twig) >= 5)
-                    UIControllerScript.Instance.UpdateInstructions("Craft a berry basket");
+                    InventoryMenuManagerScript.Instance.UpdateInstructions("Craft a berry basket");
                 _allTimeTwigsCollected++;
                 if (_allTimeTwigsCollected == 1)
                     DialogueManagerScript.Instance.ShowDialogue("Splendid! If we can collect 5 twigs we should be able to make a berry basket.");
@@ -66,7 +66,7 @@ namespace FarmerDemo
                     AddToInventory(ResourceType.Twig, -5);
                     HasBasket = true;
                     BasketVisual.SetActive(true);
-                    UIControllerScript.Instance.UpdateInstructions("Collect 20 berries");
+                    InventoryMenuManagerScript.Instance.UpdateInstructions("Collect 20 berries");
                 }
             }
             if (collision.gameObject.CompareTag("BerryBush"))
@@ -88,7 +88,7 @@ namespace FarmerDemo
                         BasketWithBerriesVisual.SetActive(true);
                     }
                     if (AmountInInventory(ResourceType.Berry) >= 20)
-                        UIControllerScript.Instance.UpdateInstructions("You win!");
+                        InventoryMenuManagerScript.Instance.UpdateInstructions("You win!");
                 }
             }
         }
