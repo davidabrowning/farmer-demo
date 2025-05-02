@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class TreeScript : ItemBase
+    public class TreeScript : ItemInteractable
     {
         public const int MaxTwigDelay = 100;
-        public void Start()
+        protected override void Start()
         {
+            base.Start();
             StartCoroutine(DropTwigs());
         }
 
@@ -23,8 +24,31 @@ namespace FarmerDemo
 
         public void DropMaxTwigs()
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5; i++)
                 ItemBuilderScript.Instance.TryBuildItem(BottomLeft - Vector2Int.one, TopRight + Vector2Int.one, "Twig", out GameObject builtTwig);
+        }
+
+        protected override void PopulateActions()
+        {
+            Actions.Add(new ObjectAction(this, "shake_tree", "Shake down some twigs"));
+            Actions.Add(new ObjectAction(this, "cut_tree", "Cut down tree"));
+        }
+
+        public override void Interact(string actionId)
+        {
+            switch (actionId)
+            {
+                case "shake_tree":
+                    gameObject.GetComponent<TreeScript>().DropMaxTwigs();
+                    break;
+                case "cut_tree":
+                    PlayerScript.Instance.TwigInventory += 500;
+                    Destroy(gameObject);
+                    break;
+                default:
+                    Debug.Log("Unknown action.");
+                    break;
+            }
         }
     }
 }
