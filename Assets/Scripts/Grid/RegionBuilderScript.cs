@@ -44,7 +44,6 @@ namespace FarmerDemo
                         ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Tree", out GameObject builtTree);
                     break;
                 case RegionTypeEnum.Dirt:
-                    ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "WorkBench", out GameObject builtBench);
                     ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Stone", out GameObject builtStoneDeposit);
                     ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Iron", out GameObject builtIronDeposit);
                     break;

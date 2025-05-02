@@ -4,6 +4,7 @@ namespace FarmerDemo
 {
     public class UIItemClicker : MonoBehaviour
     {
+        public GameObject MenuCanvas;
         public GameObject MenuPrefab;
         private GameObject _currentMenu;
         private ItemInteractable _clickedInteractable;
@@ -37,7 +38,7 @@ namespace FarmerDemo
         }
         private void InstantiateMenu()
         {
-            _currentMenu = Instantiate(MenuPrefab, GameObject.Find("UICanvas").transform);
+            _currentMenu = Instantiate(MenuPrefab, MenuCanvas.transform);
             UIItemPopupMenu popup = _currentMenu.GetComponent<UIItemPopupMenu>();
             popup.Setup(_clickedInteractable.Actions, Input.mousePosition);
         }

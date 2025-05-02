@@ -18,7 +18,7 @@ namespace FarmerDemo
             if (GridManagerScript.Instance.IsOccupied(location))
                 return false;
 
-            _prefab = Resources.Load<GameObject>("Prefabs/" + prefabName);
+            _prefab = Resources.Load<GameObject>("Prefabs/World/" + prefabName);
             obj = InstantiateObject(location);
             PlaceObject(obj);
             return true;
@@ -27,7 +27,7 @@ namespace FarmerDemo
         {
             obj = null;
 
-            _prefab = Resources.Load<GameObject>("Prefabs/" + prefabName);
+            _prefab = Resources.Load<GameObject>("Prefabs/World/" + prefabName);
             ItemPlacementLogic itemPlacementLogic = new ItemPlacementLogic(_prefab.GetComponent<ItemBase>().Size, GridManagerScript.Instance);
             if (!itemPlacementLogic.TryGetOpenTiles(bottomLeft, topRight, out List<Vector2Int> openTiles))
                 return false;
