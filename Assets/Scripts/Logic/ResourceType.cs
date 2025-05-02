@@ -7,6 +7,7 @@ namespace FarmerDemo
         Circuit,
         Stone,
         Iron,
-        Wheat,
+        Fish,
+        Seed,
     }
 }

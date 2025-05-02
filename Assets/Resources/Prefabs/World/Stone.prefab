@@ -151,3 +151,4 @@ MonoBehaviour:
   Size: {x: 2, y: 2}
   ClockwiseRotationDegrees: 0
   OccupiedTiles: []
+  Actions: []

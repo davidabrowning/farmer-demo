@@ -50,6 +50,7 @@ MonoBehaviour:
   Size: {x: 1, y: 2}
   ClockwiseRotationDegrees: 0
   OccupiedTiles: []
+  Actions: []
 --- !u!212 &5769830556064054411
 SpriteRenderer:
   m_ObjectHideFlags: 0

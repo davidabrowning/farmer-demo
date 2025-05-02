@@ -29,7 +29,7 @@ namespace FarmerDemo
         private List<ResourceAmount> GetConstructionCosts()
         {
             List<ResourceAmount> constructionCosts = new();
-            constructionCosts.Add(new ResourceAmount(ResourceType.Circuit, 2));
+            constructionCosts.Add(new ResourceAmount(ResourceType.Berry, 6));
             return constructionCosts;
         }
     }

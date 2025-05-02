@@ -9,6 +9,7 @@ namespace FarmerDemo
         public List<ResourceAmount> ResourceInventory = new();
         public float MoveSpeed = 5f;
         public bool HasBasket = false;
+        public bool HasDrill = false;
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
@@ -44,6 +45,11 @@ namespace FarmerDemo
             if (rb == null)
                 return null;
             return new Vector2Int((int)Mathf.Round(rb.position.x), (int)Mathf.Round(rb.position.y));
+        }
+
+        public void SetHasBasket(bool hasBasket)
+        {
+            HasBasket = hasBasket;
         }
 
         void OnCollisionEnter2D(Collision2D collision)
