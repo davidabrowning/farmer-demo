@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace FarmerDemo
@@ -5,23 +6,32 @@ namespace FarmerDemo
     public class GridHighlighterScript : MonoBehaviourSingleton<GridHighlighterScript>
     {
         public GameObject HighlightPrefab;
-        private GameObject currentHighlight;
+        private List<GameObject> _currentHighlights = new();
 
         private void Start()
         {
-            currentHighlight = Instantiate(HighlightPrefab);
-            currentHighlight.SetActive(false);
         }
 
-        public void Highlight(Vector2Int tile)
+        public void Highlight(List<Vector2Int> tiles)
         {
-            currentHighlight.SetActive(true);
-            currentHighlight.transform.position = new Vector3Int(tile.x, tile.y, 1);
+            Hide();
+            foreach (Vector2Int tile in tiles)
+            {
+                GameObject currentHighlight = Instantiate(HighlightPrefab);
+                currentHighlight.SetActive(true);
+                currentHighlight.transform.position = new Vector3Int(tile.x, tile.y, 1);
+                _currentHighlights.Add(currentHighlight);
+            }
         }
 
         public void Hide()
         {
-            currentHighlight.SetActive(false);
+            foreach (GameObject currentHighlight in _currentHighlights)
+            {
+                currentHighlight.SetActive(false);
+                Destroy(currentHighlight);
+            }
+            _currentHighlights.Clear();
         }
     }
 }

@@ -11,6 +11,18 @@ namespace FarmerDemo
         private GameObject _prefab;
         public Transform ParentObject;
 
+        public bool TryBuildItemAtSpecificLocation(List<Vector2Int> location, string prefabName, out GameObject obj)
+        {
+            obj = null;
+
+            if (GridManagerScript.Instance.IsOccupied(location))
+                return false;
+
+            _prefab = Resources.Load<GameObject>("Prefabs/" + prefabName);
+            obj = InstantiateObject(location);
+            PlaceObject(obj);
+            return true;
+        }
         public bool TryBuildItem(Vector2 bottomLeft, Vector2 topRight, string prefabName, out GameObject obj)
         {
             obj = null;

@@ -7,6 +7,7 @@ namespace FarmerDemo
         public float MoveSpeed = 5f;
         public float TwigInventory = 0f;
         public float BerryInventory = 0f;
+        public int CircuitInventory = 5;
         public bool HasBasket = false;
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
