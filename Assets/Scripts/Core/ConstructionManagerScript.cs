@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FarmerDemo
@@ -10,6 +11,7 @@ namespace FarmerDemo
         public string ItemName = "";
         public GameObject ItemPrefab;
         public Vector2Int ItemPrefabSize;
+        public List<ResourceAmount> ConstructionCosts;
         private void Update()
         {
             if (BuildModeOn)
@@ -26,10 +28,14 @@ namespace FarmerDemo
 
                 if (Input.GetMouseButtonDown(0)) // left-click
                 {
-                    if (ItemBuilderScript.Instance.TryBuildItemAtSpecificLocation(targetTiles, ItemName, out GameObject builtObj))
+                    if (PlayerScript.Instance.HasInInventory(ConstructionCosts))
                     {
-                        GridHighlighterScript.Instance.Hide();
-                        ExitBuildMode();
+                        if (ItemBuilderScript.Instance.TryBuildItemAtSpecificLocation(targetTiles, ItemName, out GameObject builtObj))
+                        {
+                            PlayerScript.Instance.RemoveFromInventory(ConstructionCosts);
+                            GridHighlighterScript.Instance.Hide();
+                            ExitBuildMode();
+                        }
                     }
                 }
             }
@@ -46,8 +52,9 @@ namespace FarmerDemo
         public void ToggleBuildMode(string itemName)
         {
             ItemName = itemName;
-            ItemPrefab = Resources.Load<GameObject>("Prefabs/" + ItemName);
+            ItemPrefab = Resources.Load<GameObject>("Prefabs/World/" + ItemName);
             ItemPrefabSize = ItemPrefab.GetComponent<ItemBase>().Size;
+            ConstructionCosts = ItemPrefab.GetComponent<IConstructable>().ConstructionCosts;
             if (BuildModeOn)
                 ExitBuildMode();
             else

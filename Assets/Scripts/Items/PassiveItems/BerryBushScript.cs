@@ -6,7 +6,7 @@ namespace FarmerDemo
 {
     public class BerryBushScript : ItemBase
     {
-        public float BerryCount = 0f;
+        public int BerryCount = 0;
         public float MinBerryGrowthInterval = 2f;
         public float MaxBerryGrowthInterval = 8f;
         private float MaxBerryCount = 2f;

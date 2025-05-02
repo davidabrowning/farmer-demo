@@ -13,7 +13,7 @@ namespace FarmerDemo
             switch (actionId)
             {
                 case "search_stone":
-                    PlayerScript.Instance.BerryInventory += 25;
+                    PlayerScript.Instance.AddToInventory(ResourceType.Stone, 25);
                     break;
                 default:
                     Debug.Log("Unknown action.");

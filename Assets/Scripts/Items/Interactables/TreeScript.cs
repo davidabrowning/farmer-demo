@@ -42,7 +42,7 @@ namespace FarmerDemo
                     gameObject.GetComponent<TreeScript>().DropMaxTwigs();
                     break;
                 case "cut_tree":
-                    PlayerScript.Instance.TwigInventory += 500;
+                    PlayerScript.Instance.AddToInventory(ResourceType.Twig, 500);
                     Destroy(gameObject);
                     break;
                 default:

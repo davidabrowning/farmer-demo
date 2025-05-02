@@ -16,9 +16,9 @@ namespace FarmerDemo
 
         private void Update()
         {
-            int twigs = (int)Player.GetComponent<PlayerScript>().TwigInventory;
-            int berries = (int)Player.GetComponent<PlayerScript>().BerryInventory;
-            int circuits = Player.GetComponent<PlayerScript>().CircuitInventory;
+            int twigs = (int)Player.GetComponent<PlayerScript>().AmountInInventory(ResourceType.Twig);
+            int berries = (int)Player.GetComponent<PlayerScript>().AmountInInventory(ResourceType.Berry);
+            int circuits = Player.GetComponent<PlayerScript>().AmountInInventory(ResourceType.Circuit);
 
             TwigInventoryCountText.text = "Twigs: " + twigs;
             BerryInventoryCountText.text = "Berries: " + berries;
