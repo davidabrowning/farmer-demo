@@ -34,15 +34,22 @@ namespace FarmerDemo
                         {
                             PlayerScript.Instance.RemoveFromInventory(ConstructionCosts);
                             GridHighlighterScript.Instance.Hide();
-                            ExitBuildMode();
                         }
                     }
+                    else
+                    {
+                        DialogueManagerScript.Instance.ShowDialogue("Not quite enough resources to build a " + ItemName + " yet.");
+                    }
+                    ExitBuildMode();
                 }
             }
         }
         public void EnterBuildMode()
         {
-            BuildModeOn = true;
+            if (PlayerScript.Instance.HasInInventory(ConstructionCosts))
+                BuildModeOn = true;
+            else
+                DialogueManagerScript.Instance.ShowDialogue("Not quite enough resources to build a " + ItemName + " yet.");
         }
         public void ExitBuildMode()
         {

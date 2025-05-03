@@ -13,7 +13,6 @@ namespace FarmerDemo
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
-        private int _allTimeTwigsCollected = 0;
 
         private Rigidbody2D rb;
         private Vector2 movement;
@@ -24,7 +23,6 @@ namespace FarmerDemo
             BasketVisual.SetActive(false);
             BasketWithFewBerriesVisual.SetActive(false);
             BasketWithBerriesVisual.SetActive(false);
-            ResourceInventory.Add(new ResourceAmount(ResourceType.Circuit, 5));
         }
 
         void Update()
@@ -33,6 +31,28 @@ namespace FarmerDemo
             float moveY = Input.GetAxis("Vertical");
 
             movement = new Vector2(moveX, moveY);
+
+            if (HasBasket)
+            {
+                if (AmountInInventory(ResourceType.Berry) < 5)
+                {
+                    BasketVisual.SetActive(true);
+                    BasketWithFewBerriesVisual.SetActive(false);
+                    BasketWithBerriesVisual.SetActive(false);
+                }
+                if (AmountInInventory(ResourceType.Berry) > 5)
+                {
+                    BasketVisual.SetActive(false);
+                    BasketWithFewBerriesVisual.SetActive(true);
+                    BasketWithBerriesVisual.SetActive(false);
+                }
+                if (AmountInInventory(ResourceType.Berry) > 10)
+                {
+                    BasketVisual.SetActive(false);
+                    BasketWithFewBerriesVisual.SetActive(false);
+                    BasketWithBerriesVisual.SetActive(true);
+                }
+            }
         }
 
         void FixedUpdate()
@@ -61,41 +81,6 @@ namespace FarmerDemo
                 AddToInventory(ResourceType.Twig, 1);
                 if (AmountInInventory(ResourceType.Twig) >= 5)
                     InventoryMenuManagerScript.Instance.UpdateInstructions("Craft a berry basket");
-                _allTimeTwigsCollected++;
-                if (_allTimeTwigsCollected == 1)
-                    DialogueManagerScript.Instance.ShowDialogue("Splendid! If we can collect 5 twigs we should be able to make a berry basket.");
-            }
-            if (collision.gameObject.CompareTag("WorkBench"))
-            {
-                if (AmountInInventory(ResourceType.Twig) >= 5)
-                {
-                    AddToInventory(ResourceType.Twig, -5);
-                    HasBasket = true;
-                    BasketVisual.SetActive(true);
-                    InventoryMenuManagerScript.Instance.UpdateInstructions("Collect 20 berries");
-                }
-            }
-            if (collision.gameObject.CompareTag("BerryBush"))
-            {
-                if (HasBasket)
-                {
-                    BerryBushScript berryBush = collision.gameObject.GetComponent<BerryBushScript>();
-                    AddToInventory(ResourceType.Berry, berryBush.BerryCount);
-                    berryBush.ClearBerries();
-                    if (AmountInInventory(ResourceType.Berry) > 5)
-                    {
-                        BasketVisual.SetActive(false);
-                        BasketWithFewBerriesVisual.SetActive(true);
-                    }
-                    if (AmountInInventory(ResourceType.Berry) > 10)
-                    {
-                        BasketVisual.SetActive(false);
-                        BasketWithFewBerriesVisual.SetActive(false);
-                        BasketWithBerriesVisual.SetActive(true);
-                    }
-                    if (AmountInInventory(ResourceType.Berry) >= 20)
-                        InventoryMenuManagerScript.Instance.UpdateInstructions("You win!");
-                }
             }
         }
 

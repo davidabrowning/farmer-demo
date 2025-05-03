@@ -11,6 +11,7 @@ namespace FarmerDemo {
         {
             PopulateActions();
         }
+
         protected abstract void PopulateActions();
         public abstract void Interact(string actionId);
     }

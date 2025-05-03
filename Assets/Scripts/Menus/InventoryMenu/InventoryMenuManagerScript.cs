@@ -29,6 +29,7 @@ namespace FarmerDemo
         public GameObject BuildListButtonTextPrefab;
         public GameObject BuildListResourceIconPrefab;
         public GameObject BuildListResourceTextPrefab;
+        public Dictionary<string, GameObject> BuildOptionNameMapping = new();
 
         protected override void Awake()
         {
@@ -61,6 +62,15 @@ namespace FarmerDemo
             IronInventorySection.SetActive(irons > 0);
             FishInventorySection.SetActive(fishes > 0);
             SeedInventorySection.SetActive(seeds > 0);
+
+            int phase = 0;
+            switch (phase)
+            {
+                case 0:
+                    BuildOptionNameMapping.GetValueOrDefault("Fabricator").SetActive(true);
+                    BuildOptionNameMapping.GetValueOrDefault("LabBuilding").SetActive(true);
+                    break;
+            }
         }
         public void UpdateInstructions(string instructionsText)
         {
@@ -95,6 +105,8 @@ namespace FarmerDemo
                     ConstructionManagerScript.Instance.ToggleBuildMode(obj.name);
                 });
 
+                BuildOptionNameMapping.Add(obj.name, buildListButton);
+                buildListButton.SetActive(false);
 
                 GameObject buildListButtonText = Instantiate(BuildListButtonTextPrefab);
                 buildListButtonText.transform.SetParent(buildListButton.transform);

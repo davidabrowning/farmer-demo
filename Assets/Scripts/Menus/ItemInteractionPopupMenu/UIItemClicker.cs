@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace FarmerDemo
 {
@@ -11,7 +12,7 @@ namespace FarmerDemo
 
         void Update()
         {
-            if (MousePressed() && NoMenuYet())
+            if (MousePressed() && NoMenuYet() && !EventSystem.current.IsPointerOverGameObject() )
             {
                 if (SetClickedInteractable())
                 {

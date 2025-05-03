@@ -25,7 +25,11 @@ namespace FarmerDemo
                         PlayerScript.Instance.RemoveFromInventory(basketCost);
                         PlayerScript.Instance.SetHasBasket(true);
                     }
-                    break;
+                    else
+                    {
+                        DialogueManagerScript.Instance.ShowDialogue("We need a few more twigs first.");
+                    }
+                        break;
                 case "craft_drill":
                     List<ResourceAmount> drillCost = new List<ResourceAmount>() { 
                         new ResourceAmount(ResourceType.Twig, 5), 
@@ -34,6 +38,10 @@ namespace FarmerDemo
                     {
                         PlayerScript.Instance.RemoveFromInventory(drillCost);
                         PlayerScript.Instance.HasDrill = true;
+                    }
+                    else
+                    {
+                        DialogueManagerScript.Instance.ShowDialogue("We don't quite have the resources for a drill yet.");
                     }
                     break;
                 case "deconstruct":
