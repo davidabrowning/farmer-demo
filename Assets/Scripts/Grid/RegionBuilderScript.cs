@@ -5,14 +5,14 @@ namespace FarmerDemo
 {
     public class RegionBuilderScript : MonoBehaviourSingleton<RegionBuilderScript>
     {
-        private int _regionSize = 15;
+        private int _regionSize = 5;
 
         public void BuildRegion(Vector2Int regionCoords, RegionTypeEnum regionType)
         {
             Vector2Int bottomLeft = GetRegionBottomLeft(regionCoords);
             Vector2Int topRight = GetRegionTopRight(regionCoords);
-            PlaceItems(bottomLeft, topRight, regionType);
             PlaceTiles(bottomLeft, topRight, regionType);
+            PlaceItems(bottomLeft, topRight, regionType);
         }
 
         private Vector2Int GetRegionBottomLeft(Vector2Int regionCoords)
@@ -36,8 +36,10 @@ namespace FarmerDemo
                 case RegionTypeEnum.Bush:
                     for (int i = 0; i < 5; i++)
                         ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "BerryBush", out GameObject builtBerryBush);
-                    for (int i = 0; i < 15; i++)
-                        ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Wheat", out GameObject builtBerryBush);
+                    //for (int i = 0; i < 15; i++)
+                        //ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Wheat", out GameObject builtWheat);
+                    for (int i = 0; i < 3; i++)
+                        ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Tree", out GameObject builtTree);
                     break;
                 case RegionTypeEnum.Tree:
                     for (int i = 0; i < 3; i++)

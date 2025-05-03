@@ -11,7 +11,9 @@ namespace FarmerDemo
         public bool IsOccupied(Vector2Int cell)
         {
             if (PlayerScript.Instance.LocationInt() == cell)
-                    return true;
+                return true;
+            if (TileBuilderScript.Instance.GetRegionType(cell) == RegionTypeEnum.Water)
+                return true;
             return placedObjects
                 .Where(obj => obj != null)
                 .Select(obj => obj.GetComponent<ItemBase>())

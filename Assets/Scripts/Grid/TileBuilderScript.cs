@@ -1,5 +1,8 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace FarmerDemo
 {
@@ -10,6 +13,7 @@ namespace FarmerDemo
         public GameObject TreeBackground;
         public GameObject BushBackground;
         public GameObject WaterBackground;
+        public Dictionary<Vector2Int, RegionTypeEnum> TileMap = new();
 
         public void PlaceTile(RegionTypeEnum regionType, Vector2 coords)
         {
@@ -32,23 +36,13 @@ namespace FarmerDemo
                     tile = WaterBackground;
                     break;
             }
-            PlaceBackgroundTile(tile, new Vector3(coords.x, coords.y, 0));
+            PlaceBackgroundTile(tile, regionType, new Vector3(coords.x, coords.y, 0));
         }
 
-        public void CreateBackgroundArea(GameObject backgroundTile, Vector3 cornerA, Vector3 cornerB)
-        {
-            for (float x = cornerA.x; x <= cornerB.x; x++)
-            {
-                for (float y = cornerA.y; y <= cornerB.y; y++)
-                {
-                    PlaceBackgroundTile(backgroundTile, new Vector3(x, y, 0));
-                }
-            }
-        }
-
-        void PlaceBackgroundTile(GameObject backgroundTile, Vector3 position)
+        void PlaceBackgroundTile(GameObject backgroundTile, RegionTypeEnum regionType, Vector3 position)
         {
             GameObject area = Instantiate(backgroundTile, position, Quaternion.identity);
+            TileMap.Add(new Vector2Int((int)position.x, (int)position.y), regionType);
 
             SpriteRenderer renderer = area.GetComponent<SpriteRenderer>();
             Vector2 spriteSize = renderer.sprite.bounds.size;
@@ -56,6 +50,11 @@ namespace FarmerDemo
             area.transform.SetParent(TileFolder.transform);
             if ((position.x + position.y) % 2 == 0)
                 renderer.color = Color.gray;
+        }
+
+        public RegionTypeEnum GetRegionType(Vector2Int location)
+        {
+            return TileMap.GetValueOrDefault(location);
         }
     }
 }
