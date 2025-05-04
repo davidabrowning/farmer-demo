@@ -16,10 +16,12 @@ namespace FarmerDemo
 
         private Rigidbody2D rb;
         private Vector2 movement;
+        private SpriteRenderer _spriteRenderer;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             BasketVisual.SetActive(false);
             BasketWithFewBerriesVisual.SetActive(false);
             BasketWithBerriesVisual.SetActive(false);
@@ -58,6 +60,12 @@ namespace FarmerDemo
         void FixedUpdate()
         {
             rb.MovePosition(rb.position + movement * MoveSpeed * Time.fixedDeltaTime);
+        }
+
+        protected void LateUpdate()
+        {
+            // Multiply by -100 to convert Y to int and get a good range
+            _spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
         }
 
         public Vector2Int? LocationInt()

@@ -15,6 +15,7 @@ namespace FarmerDemo
 
         public void Awake()
         {
+            base.Awake();
             gameObject.GetComponent<SpriteRenderer>().sprite = EmptyBushSprite;
         }
 

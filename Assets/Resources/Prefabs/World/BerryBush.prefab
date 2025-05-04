@@ -50,11 +50,12 @@ MonoBehaviour:
   Size: {x: 1, y: 1}
   ClockwiseRotationDegrees: 0
   OccupiedTiles: []
+  Actions: []
   BerryCount: 0
   MinBerryGrowthInterval: 2
   MaxBerryGrowthInterval: 8
-  EmptyBushSprite: {fileID: 21300000, guid: fc96f00c5ebd4034888550b1f0109917, type: 3}
-  FullBushSprite: {fileID: 21300000, guid: 4cbff811e513c0e4fbc432ba3d07e4b7, type: 3}
+  EmptyBushSprite: {fileID: 21300000, guid: ab2c82460d480cb4bb2bd15d2c293937, type: 3}
+  FullBushSprite: {fileID: 21300000, guid: 44d9465816fc31443acdafcca3a7ab96, type: 3}
 --- !u!212 &4210722840995476141
 SpriteRenderer:
   m_ObjectHideFlags: 0

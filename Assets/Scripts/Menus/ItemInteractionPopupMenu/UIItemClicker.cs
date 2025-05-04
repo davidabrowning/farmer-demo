@@ -28,7 +28,7 @@ namespace FarmerDemo
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit.collider != null)
             {
-                ItemInteractable interactable = hit.collider.GetComponent<ItemInteractable>();
+                ItemInteractable interactable = hit.collider.GetComponentInParent<ItemInteractable>();
                 if (interactable != null)
                 {
                     _clickedInteractable = interactable;
