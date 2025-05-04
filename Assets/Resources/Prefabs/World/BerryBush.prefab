@@ -54,8 +54,9 @@ MonoBehaviour:
   BerryCount: 0
   MinBerryGrowthInterval: 2
   MaxBerryGrowthInterval: 8
-  EmptyBushSprite: {fileID: 21300000, guid: ab2c82460d480cb4bb2bd15d2c293937, type: 3}
-  FullBushSprite: {fileID: 21300000, guid: 44d9465816fc31443acdafcca3a7ab96, type: 3}
+  EmptyBushSprite: {fileID: 21300000, guid: 058b3bfd0c8b4c64f86e68578fa0b233, type: 3}
+  OneBerryBushSprite: {fileID: 21300000, guid: 6756fafea4df2454e9840a8a33374849, type: 3}
+  TwoBerriesBushSprite: {fileID: 21300000, guid: 325267963a3299f4e90814271e5138a2, type: 3}
 --- !u!212 &4210722840995476141
 SpriteRenderer:
   m_ObjectHideFlags: 0

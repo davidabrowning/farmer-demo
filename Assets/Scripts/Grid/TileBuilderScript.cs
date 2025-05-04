@@ -10,8 +10,7 @@ namespace FarmerDemo
     {
         public GameObject TileFolder;
         public GameObject DirtBackground;
-        public GameObject TreeBackground;
-        public GameObject BushBackground;
+        public GameObject GrassBackground;
         public GameObject WaterBackground;
         public Dictionary<Vector2Int, RegionTypeEnum> TileMap = new();
 
@@ -21,13 +20,13 @@ namespace FarmerDemo
             switch (regionType)
             {
                 case RegionTypeEnum.Tree:
-                    tile = TreeBackground;
+                    tile = GrassBackground;
+                    break;
+                case RegionTypeEnum.Bush:
+                    tile = GrassBackground;
                     break;
                 case RegionTypeEnum.Dirt:
                     tile = DirtBackground;
-                    break;
-                case RegionTypeEnum.Bush:
-                    tile = BushBackground;
                     break;
                 case RegionTypeEnum.Water:
                     tile = WaterBackground;

@@ -11,7 +11,8 @@ namespace FarmerDemo
         public float MaxBerryGrowthInterval = 8f;
         private float MaxBerryCount = 2f;
         public Sprite EmptyBushSprite;
-        public Sprite FullBushSprite;
+        public Sprite OneBerryBushSprite;
+        public Sprite TwoBerriesBushSprite;
 
         public void Awake()
         {
@@ -38,7 +39,10 @@ namespace FarmerDemo
         private void GrowOneBerry()
         {
             BerryCount++;
-            gameObject.GetComponent<SpriteRenderer>().sprite = FullBushSprite;
+            if (BerryCount == 1)
+                gameObject.GetComponent<SpriteRenderer>().sprite = OneBerryBushSprite;
+            if (BerryCount >1 )
+                gameObject.GetComponent<SpriteRenderer>().sprite = TwoBerriesBushSprite;
         }
 
         public void ClearBerries()
