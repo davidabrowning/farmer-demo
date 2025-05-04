@@ -1,4 +1,5 @@
 using FarmerDemo;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +9,24 @@ public class WoodBurnerScript : ItemInteractable, IConstructable
 
     protected override void PopulateActions()
     {
+        Actions.Add(new ObjectAction(this, "add_wood", "Add a twig to the burner"));
         Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
     }
     public override void Interact(string actionId)
     {
         switch (actionId)
         {
+            case "add_wood":
+                if (PlayerScript.Instance.HasInInventory(new ResourceAmount(ResourceType.Twig, 1)))
+                {
+                    PlayerScript.Instance.RemoveFromInventory(new ResourceAmount(ResourceType.Twig, 1));
+                    StartCoroutine(BurnATwig());
+                }
+                else
+                {
+                    DialogueManagerScript.Instance.ShowDialogue("We need to gather some twigs first.");
+                }
+                break;
             case "deconstruct":
                 PlayerScript.Instance.AddToInventory(ConstructionCosts);
                 Destroy(gameObject);
@@ -27,7 +40,16 @@ public class WoodBurnerScript : ItemInteractable, IConstructable
     private List<ResourceAmount> GetConstructionCosts()
     {
         List<ResourceAmount> constructionCosts = new();
-        constructionCosts.Add(new ResourceAmount(ResourceType.Stone, 4));
+        constructionCosts.Add(new ResourceAmount(ResourceType.Stone, 50));
         return constructionCosts;
+    }
+
+    private IEnumerator BurnATwig()
+    {
+        StartWorkingAnimation();
+        PlayerScript.Instance.SetElectricityIsOn(true);
+        yield return new WaitForSeconds(10);
+        StartIdleAnimation();
+        PlayerScript.Instance.SetElectricityIsOn(true);
     }
 }

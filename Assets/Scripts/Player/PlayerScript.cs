@@ -9,10 +9,12 @@ namespace FarmerDemo
         public List<ResourceAmount> ResourceInventory = new();
         public float MoveSpeed = 5f;
         public bool HasBasket = false;
-        public bool HasDrill = false;
+        public bool HasPickaxe = false;
+        public bool ElectricityIsOn = false;
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
+        public GameObject PickaxeVisual;
 
         private Rigidbody2D rb;
         private Vector2 movement;
@@ -25,6 +27,7 @@ namespace FarmerDemo
             BasketVisual.SetActive(false);
             BasketWithFewBerriesVisual.SetActive(false);
             BasketWithBerriesVisual.SetActive(false);
+
         }
 
         void Update()
@@ -55,6 +58,8 @@ namespace FarmerDemo
                     BasketWithBerriesVisual.SetActive(true);
                 }
             }
+
+            PickaxeVisual.SetActive(HasPickaxe);
         }
 
         void FixedUpdate()
@@ -78,6 +83,16 @@ namespace FarmerDemo
         public void SetHasBasket(bool hasBasket)
         {
             HasBasket = hasBasket;
+        }
+
+        public void SetHasPickaxe(bool hasPickaxe)
+        {
+            HasPickaxe = hasPickaxe;
+        }
+
+        public void SetElectricityIsOn(bool electricityIsOn)
+        {
+            ElectricityIsOn = electricityIsOn;
         }
 
         void OnCollisionEnter2D(Collision2D collision)

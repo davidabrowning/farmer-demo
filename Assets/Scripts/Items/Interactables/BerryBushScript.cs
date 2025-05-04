@@ -14,7 +14,7 @@ namespace FarmerDemo
         public Sprite OneBerryBushSprite;
         public Sprite TwoBerriesBushSprite;
 
-        public void Awake()
+        protected override void Awake()
         {
             base.Awake();
             gameObject.GetComponent<SpriteRenderer>().sprite = EmptyBushSprite;

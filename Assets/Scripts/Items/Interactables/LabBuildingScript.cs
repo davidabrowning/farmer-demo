@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,19 +19,7 @@ namespace FarmerDemo
             switch (actionId)
             {
                 case "berry_research":
-                    while (ResearchProgress < 100 && PlayerScript.Instance.HasInInventory(new ResourceAmount(ResourceType.Berry, 1)))
-                    {
-                        PlayerScript.Instance.RemoveFromInventory(new ResourceAmount(ResourceType.Berry, 1));
-                        ResearchProgress += 10;
-                    }
-                    if (ResearchProgress < 100)
-                    {
-                        DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more berries for study.");
-                    }
-                    else
-                    {
-                        GameManagerScript.Instance.AdvanceEra();
-                    }
+                    StartCoroutine(PerformBerryResearch());
                     break;
                 case "deconstruct":
                     PlayerScript.Instance.AddToInventory(ConstructionCosts);
@@ -48,6 +37,27 @@ namespace FarmerDemo
             List<ResourceAmount> constructionCosts = new();
             constructionCosts.Add(new ResourceAmount(ResourceType.Berry, 6));
             return constructionCosts;
+        }
+
+        private IEnumerator PerformBerryResearch()
+        {
+            while (ResearchProgress < 100 && PlayerScript.Instance.HasInInventory(new ResourceAmount(ResourceType.Berry, 1)))
+            {
+                PlayerScript.Instance.RemoveFromInventory(new ResourceAmount(ResourceType.Berry, 1));
+                StartWorkingAnimation();
+                yield return new WaitForSeconds(2);
+                ResearchProgress += 10;
+            }
+            StartIdleAnimation();
+            yield return new WaitForSeconds(1);
+            if (ResearchProgress < 100)
+            {
+                DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more berries for study.");
+            }
+            else
+            {
+                GameManagerScript.Instance.AdvanceEra();
+            }
         }
     }
 }

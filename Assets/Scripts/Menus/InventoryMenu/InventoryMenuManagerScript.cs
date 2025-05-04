@@ -63,12 +63,15 @@ namespace FarmerDemo
             FishInventorySection.SetActive(fishes > 0);
             SeedInventorySection.SetActive(seeds > 0);
 
-            int phase = 0;
-            switch (phase)
+            switch (GameManagerScript.Instance.CurrentEra)
             {
                 case 0:
                     BuildOptionNameMapping.GetValueOrDefault("Fabricator").SetActive(true);
                     BuildOptionNameMapping.GetValueOrDefault("LabBuilding").SetActive(true);
+                    break;
+                case 1:
+                    BuildOptionNameMapping.GetValueOrDefault("WoodBurner").SetActive(true);
+                    BuildOptionNameMapping.GetValueOrDefault("CircuitMaker").SetActive(true);
                     break;
             }
         }

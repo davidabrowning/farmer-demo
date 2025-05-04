@@ -5,7 +5,7 @@ namespace FarmerDemo
 {
     public class RegionBuilderScript : MonoBehaviourSingleton<RegionBuilderScript>
     {
-        private int _regionSize = 5;
+        private int _regionSize = 10;
 
         public void BuildRegion(Vector2Int regionCoords, RegionTypeEnum regionType)
         {

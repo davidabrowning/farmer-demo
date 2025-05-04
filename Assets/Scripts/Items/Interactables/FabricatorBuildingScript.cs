@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace FarmerDemo
         protected override void PopulateActions()
         {
             Actions.Add(new ObjectAction(this, "craft_berry_basket", "Create a berry basket (5 twigs)"));
-            Actions.Add(new ObjectAction(this, "craft_drill", "Create a drill (5 twigs + 5 stone)"));
+            Actions.Add(new ObjectAction(this, "craft_pickaxe", "Create a pickaxe (5 twigs + 2 stones)"));
             Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
         }
         public override void Interact(string actionId)
@@ -22,26 +23,24 @@ namespace FarmerDemo
                         new ResourceAmount(ResourceType.Twig, 5) };
                     if (PlayerScript.Instance.HasInInventory(basketCost))
                     {
-                        PlayerScript.Instance.RemoveFromInventory(basketCost);
-                        PlayerScript.Instance.SetHasBasket(true);
+                        StartCoroutine(CraftBasket(basketCost));
                     }
                     else
                     {
                         DialogueManagerScript.Instance.ShowDialogue("We need a few more twigs first.");
                     }
                         break;
-                case "craft_drill":
-                    List<ResourceAmount> drillCost = new List<ResourceAmount>() { 
+                case "craft_pickaxe":
+                    List<ResourceAmount> pickaxeCost = new List<ResourceAmount>() { 
                         new ResourceAmount(ResourceType.Twig, 5), 
-                        new ResourceAmount(ResourceType.Stone, 5) };
-                    if (PlayerScript.Instance.HasInInventory(drillCost))
+                        new ResourceAmount(ResourceType.Stone, 2) };
+                    if (PlayerScript.Instance.HasInInventory(pickaxeCost))
                     {
-                        PlayerScript.Instance.RemoveFromInventory(drillCost);
-                        PlayerScript.Instance.HasDrill = true;
+                        StartCoroutine(CraftPickaxe(pickaxeCost));
                     }
                     else
                     {
-                        DialogueManagerScript.Instance.ShowDialogue("We don't quite have the resources for a drill yet.");
+                        DialogueManagerScript.Instance.ShowDialogue("We don't quite have the resources for a pickaxe yet.");
                     }
                     break;
                 case "deconstruct":
@@ -58,6 +57,26 @@ namespace FarmerDemo
             List<ResourceAmount> constructionCosts = new();
             constructionCosts.Add(new ResourceAmount(ResourceType.Twig, 5));
             return constructionCosts;
+        }
+
+        private IEnumerator CraftBasket(List<ResourceAmount> basketCost)
+        {
+            PlayerScript.Instance.RemoveFromInventory(basketCost);
+            StartWorkingAnimation();
+            yield return new WaitForSeconds(5);
+            StartIdleAnimation();
+            yield return new WaitForSeconds(1);
+            PlayerScript.Instance.SetHasBasket(true);
+        }
+
+        private IEnumerator CraftPickaxe(List<ResourceAmount> pickaxeCost)
+        {
+            PlayerScript.Instance.RemoveFromInventory(pickaxeCost);
+            StartWorkingAnimation();
+            yield return new WaitForSeconds(5);
+            StartIdleAnimation();
+            yield return new WaitForSeconds(1);
+            PlayerScript.Instance.SetHasPickaxe(true);
         }
     }
 }
