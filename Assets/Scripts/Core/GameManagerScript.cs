@@ -10,11 +10,15 @@ namespace FarmerDemo
     {
         public GameObject Player;
         public GameObject UIController;
+        public GameObject EraPanel;
         private void Start()
         {
             WorldBuilderScript.Instance.BuildInitialWorld();
-
-            UIControllerScript.Instance.UpdateInstructions("Collect 5 twigs");
+            EraPanel.SetActive(false);
+        }
+        public void AdvanceEra()
+        {
+            EraPanel.SetActive(true);
         }
     }
 }

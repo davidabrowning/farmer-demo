@@ -1,40 +1,83 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class PlayerScript : MonoBehaviour
+    public class PlayerScript : MonoBehaviourSingleton<PlayerScript>
     {
+        public List<ResourceAmount> ResourceInventory = new();
         public float MoveSpeed = 5f;
-        public float TwigInventory = 0f;
-        public float BerryInventory = 0f;
         public bool HasBasket = false;
+        public bool HasDrill = false;
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
 
         private Rigidbody2D rb;
         private Vector2 movement;
+        private SpriteRenderer _spriteRenderer;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             BasketVisual.SetActive(false);
             BasketWithFewBerriesVisual.SetActive(false);
             BasketWithBerriesVisual.SetActive(false);
         }
 
-        // Update is called once per frame
         void Update()
         {
             float moveX = Input.GetAxis("Horizontal");
             float moveY = Input.GetAxis("Vertical");
 
             movement = new Vector2(moveX, moveY);
+
+            if (HasBasket)
+            {
+                if (AmountInInventory(ResourceType.Berry) < 5)
+                {
+                    BasketVisual.SetActive(true);
+                    BasketWithFewBerriesVisual.SetActive(false);
+                    BasketWithBerriesVisual.SetActive(false);
+                }
+                if (AmountInInventory(ResourceType.Berry) > 5)
+                {
+                    BasketVisual.SetActive(false);
+                    BasketWithFewBerriesVisual.SetActive(true);
+                    BasketWithBerriesVisual.SetActive(false);
+                }
+                if (AmountInInventory(ResourceType.Berry) > 10)
+                {
+                    BasketVisual.SetActive(false);
+                    BasketWithFewBerriesVisual.SetActive(false);
+                    BasketWithBerriesVisual.SetActive(true);
+                }
+            }
         }
 
         void FixedUpdate()
         {
             rb.MovePosition(rb.position + movement * MoveSpeed * Time.fixedDeltaTime);
+        }
+
+        protected void LateUpdate()
+        {
+            // Multiply by -100 to convert Y to int and get a good range
+            _spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        }
+
+        public Vector2Int? LocationInt()
+        {
+            if (rb == null)
+                return null;
+            return new Vector2Int((int)Mathf.Round(rb.position.x), (int)Mathf.Round(rb.position.y));
+        }
+
+        public void SetHasBasket(bool hasBasket)
+        {
+            HasBasket = hasBasket;
         }
 
         void OnCollisionEnter2D(Collision2D collision)
@@ -43,42 +86,70 @@ namespace FarmerDemo
             {
                 GridManagerScript.Instance.Remove(gameObject);
                 Destroy(collision.gameObject);
-                TwigInventory++;
-                if (TwigInventory >= 5)
-                    UIControllerScript.Instance.UpdateInstructions("Craft a berry basket");
+                AddToInventory(ResourceType.Twig, 1);
+                if (AmountInInventory(ResourceType.Twig) >= 5)
+                    InventoryMenuManagerScript.Instance.UpdateInstructions("Craft a berry basket");
             }
-            if (collision.gameObject.CompareTag("WorkBench"))
+        }
+
+        public void AddToInventory(ResourceType type, int amount)
+        {
+            if (ResourceInventory.Where(r => r.Type == type).Any())
+                ResourceInventory.Where(r => r.Type == type).First().Amount += amount;
+            else
+                ResourceInventory.Add(new ResourceAmount(type, amount));
+        }
+
+        public void AddToInventory(ResourceAmount resourceAmount)
+        {
+            AddToInventory(resourceAmount.Type, resourceAmount.Amount);
+        }
+
+        public void AddToInventory(List<ResourceAmount> resourceAmounts)
+        {
+            foreach (ResourceAmount resourceAmount in resourceAmounts)
             {
-                if (TwigInventory >= 5)
-                {
-                    TwigInventory -= 5;
-                    HasBasket = true;
-                    BasketVisual.SetActive(true);
-                    UIControllerScript.Instance.UpdateInstructions("Collect 20 berries");
-                }
+                AddToInventory(resourceAmount.Type, resourceAmount.Amount);
             }
-            if (collision.gameObject.CompareTag("BerryBush"))
+        }
+
+        public void RemoveFromInventory(ResourceAmount resourceAmount)
+        {
+            AddToInventory(resourceAmount.Type, resourceAmount.Amount * -1);
+        }
+
+        public void RemoveFromInventory(List<ResourceAmount> resourceAmounts)
+        {
+            foreach (ResourceAmount resourceAmount in resourceAmounts)
             {
-                if (HasBasket)
-                {
-                    BerryBushScript berryBush = collision.gameObject.GetComponent<BerryBushScript>();
-                    BerryInventory += berryBush.BerryCount;
-                    berryBush.ClearBerries();
-                    if (BerryInventory >5)
-                    {
-                        BasketVisual.SetActive(false);
-                        BasketWithFewBerriesVisual.SetActive(true);
-                    }
-                    if (BerryInventory > 10)
-                    {
-                        BasketVisual.SetActive(false);
-                        BasketWithFewBerriesVisual.SetActive(false);
-                        BasketWithBerriesVisual.SetActive(true);
-                    }
-                    if (BerryInventory >= 20)
-                        UIControllerScript.Instance.UpdateInstructions("You win!");
-                }
+                RemoveFromInventory(resourceAmount);
             }
+        }
+
+        public int AmountInInventory(ResourceType type)
+        {
+            return ResourceInventory.Where(r => r.Type == type).Select(r => r.Amount).Sum();
+        }
+
+        public bool HasInInventory(ResourceAmount resourceAmount)
+        {
+            return ResourceInventory.Where(r => r.Type == resourceAmount.Type).Select(r => r.Amount).Sum() >= resourceAmount.Amount;
+        }
+
+        public bool HasInInventory(List<ResourceAmount> resourceAmounts)
+        {
+            foreach (ResourceAmount resourceAmount in resourceAmounts)
+                if (!HasInInventory(resourceAmount))
+                    return false;
+            return true;
+        }
+
+        public string GetInventoryAsString()
+        {
+            string output = "";
+            foreach (ResourceAmount resourceAmount in ResourceInventory)
+                output += resourceAmount.ToString();
+            return output;
         }
     }
 }
