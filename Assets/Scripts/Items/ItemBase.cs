@@ -27,14 +27,25 @@ namespace FarmerDemo
             _spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
         }
 
+        protected void AdjustAnimationSpeed(float speedMultiplier)
+        {
+            _animator.speed *= speedMultiplier;
+        }
+
         protected void StartIdleAnimation()
         {
             _animator.SetBool("IsWorking", false);
+            _animator.SetBool("IsTraveling", false);
         }
 
         protected void StartWorkingAnimation()
         {
             _animator.SetBool("IsWorking", true);
+        }
+
+        protected void StartTravelingAnimation()
+        {
+            _animator.SetBool("IsTraveling", true);
         }
     }
 }
