@@ -50,6 +50,6 @@ public class WoodBurnerScript : ItemInteractable, IConstructable
         PlayerScript.Instance.SetElectricityIsOn(true);
         yield return new WaitForSeconds(10);
         StartIdleAnimation();
-        PlayerScript.Instance.SetElectricityIsOn(true);
+        PlayerScript.Instance.SetElectricityIsOn(false);
     }
 }

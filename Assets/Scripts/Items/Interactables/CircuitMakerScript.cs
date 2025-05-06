@@ -21,14 +21,17 @@ public class CircuitMakerScript : ItemInteractable, IConstructable
                         new ResourceAmount(ResourceType.Berry, 2),
                         new ResourceAmount(ResourceType.Iron, 2)
                 };
-                if (PlayerScript.Instance.HasInInventory(circuitCost))
+                if (!PlayerScript.Instance.ElectricityIsOn)
                 {
-                    StartCoroutine(CraftCircuit(circuitCost));
+                    DialogueManagerScript.Instance.ShowDialogue("The circuit maker requires electricity!");
+                    break;
                 }
-                else
+                if (!PlayerScript.Instance.HasInInventory(circuitCost))
                 {
                     DialogueManagerScript.Instance.ShowDialogue("We are missing some resources for that.");
+                    break;
                 }
+                StartCoroutine(CraftCircuit(circuitCost));
                 break;
             case "deconstruct":
                 PlayerScript.Instance.AddToInventory(ConstructionCosts);

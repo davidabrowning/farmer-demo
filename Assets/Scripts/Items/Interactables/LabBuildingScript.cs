@@ -8,13 +8,29 @@ namespace FarmerDemo
     {
         public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
         public int ResearchProgress = 0;
+        private int currentEraChecker = 0;
         protected override void PopulateActions()
         {
-            Actions.Add(new ObjectAction(this, "berry_research", "Study berries"));
-            Actions.Add(new ObjectAction(this, "circuit_research", "Study circuits"));
-            Actions.Add(new ObjectAction(this, "fish_research", "Study fish"));
-            Actions.Add(new ObjectAction(this, "seed_research", "Study seeds"));
+            if (GameManagerScript.Instance.CurrentEra == 0)
+                Actions.Add(new ObjectAction(this, "berry_research", "Study berries"));
+            if (GameManagerScript.Instance.CurrentEra == 1)
+                Actions.Add(new ObjectAction(this, "circuit_research", "Study circuits"));
+            if (GameManagerScript.Instance.CurrentEra == 2)
+                Actions.Add(new ObjectAction(this, "fish_research", "Study fish"));
+            if (GameManagerScript.Instance.CurrentEra == 3)
+                Actions.Add(new ObjectAction(this, "seed_research", "Study seeds"));
             Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
+        }
+
+        private void Update()
+        {
+            // Update Actions if game era has changed
+            if (GameManagerScript.Instance.CurrentEra != currentEraChecker)
+            {
+                currentEraChecker = GameManagerScript.Instance.CurrentEra;
+                Actions.Clear();
+                PopulateActions();
+            }
         }
 
         public override void Interact(string actionId)
