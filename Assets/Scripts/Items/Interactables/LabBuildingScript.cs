@@ -11,6 +11,9 @@ namespace FarmerDemo
         protected override void PopulateActions()
         {
             Actions.Add(new ObjectAction(this, "berry_research", "Study berries"));
+            Actions.Add(new ObjectAction(this, "circuit_research", "Study circuits"));
+            Actions.Add(new ObjectAction(this, "fish_research", "Study fish"));
+            Actions.Add(new ObjectAction(this, "seed_research", "Study seeds"));
             Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
         }
 
@@ -19,7 +22,16 @@ namespace FarmerDemo
             switch (actionId)
             {
                 case "berry_research":
-                    StartCoroutine(PerformBerryResearch());
+                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Berry, 1)));
+                    break;
+                case "circuit_research":
+                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Circuit, 1)));
+                    break;
+                case "fish_research":
+                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Fish, 1)));
+                    break;
+                case "seed_research":
+                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Seed, 1)));
                     break;
                 case "deconstruct":
                     PlayerScript.Instance.AddToInventory(ConstructionCosts);
@@ -31,7 +43,6 @@ namespace FarmerDemo
             }
         }
 
-
         private List<ResourceAmount> GetConstructionCosts()
         {
             List<ResourceAmount> constructionCosts = new();
@@ -39,11 +50,16 @@ namespace FarmerDemo
             return constructionCosts;
         }
 
-        private IEnumerator PerformBerryResearch()
+        private IEnumerator PerformResearch(ResourceAmount researchStepCost)
         {
-            while (ResearchProgress < 100 && PlayerScript.Instance.HasInInventory(new ResourceAmount(ResourceType.Berry, 1)))
+            if (!PlayerScript.Instance.HasInInventory(researchStepCost))
             {
-                PlayerScript.Instance.RemoveFromInventory(new ResourceAmount(ResourceType.Berry, 1));
+                DialogueManagerScript.Instance.ShowDialogue("We don't have any units of " + researchStepCost.Type.ToString().ToLower() + ".");
+                return null;
+            }
+            while (ResearchProgress < 100 && PlayerScript.Instance.HasInInventory(researchStepCost))
+            {
+                PlayerScript.Instance.RemoveFromInventory(researchStepCost);
                 StartWorkingAnimation();
                 yield return new WaitForSeconds(2);
                 ResearchProgress += 10;
@@ -52,7 +68,7 @@ namespace FarmerDemo
             yield return new WaitForSeconds(1);
             if (ResearchProgress < 100)
             {
-                DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more berries for study.");
+                DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more units of " + researchStepCost.Type.ToString().ToLower() + " for study.");
             }
             else
             {
