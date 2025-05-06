@@ -45,10 +45,13 @@ public class AutoHarvesterScript : ItemInteractable, IConstructable
         while(true)
         {
             yield return new WaitForSeconds(3);
-            AutoHarvestTile(AnchorPosition + Vector2Int.left);
-            AutoHarvestTile(AnchorPosition + Vector2Int.up);
-            AutoHarvestTile(AnchorPosition + Vector2Int.right);
-            AutoHarvestTile(AnchorPosition + Vector2Int.down);
+            if (PlayerScript.Instance.ElectricityIsOn)
+            {
+                AutoHarvestTile(AnchorPosition + Vector2Int.left);
+                AutoHarvestTile(AnchorPosition + Vector2Int.up);
+                AutoHarvestTile(AnchorPosition + Vector2Int.right);
+                AutoHarvestTile(AnchorPosition + Vector2Int.down);
+            }
         }
     }
 
