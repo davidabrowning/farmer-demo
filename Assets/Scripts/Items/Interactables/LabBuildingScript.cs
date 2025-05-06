@@ -55,7 +55,7 @@ namespace FarmerDemo
             if (!PlayerScript.Instance.HasInInventory(researchStepCost))
             {
                 DialogueManagerScript.Instance.ShowDialogue("We don't have any units of " + researchStepCost.Type.ToString().ToLower() + ".");
-                return null;
+                yield break;
             }
             while (ResearchProgress < 100 && PlayerScript.Instance.HasInInventory(researchStepCost))
             {
