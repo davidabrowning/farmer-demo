@@ -78,7 +78,6 @@ namespace FarmerDemo
                     }
                         break;
                 case "trample_bush":
-                    PlayerScript.Instance.AddToInventory(ResourceType.Twig, 2);
                     Destroy(gameObject);
                     break;
                 default:

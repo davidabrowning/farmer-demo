@@ -25,6 +25,7 @@ namespace FarmerDemo
 
         private IEnumerator ShowAdvanceEraPanel()
         {
+
             EraPanel.SetActive(true);
             yield return new WaitForSeconds(3);
             EraPanel.SetActive(false);

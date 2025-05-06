@@ -66,13 +66,14 @@ namespace FarmerDemo
             }
             StartIdleAnimation();
             yield return new WaitForSeconds(1);
-            if (ResearchProgress < 100)
+            if (ResearchProgress >= 100)
             {
-                DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more units of " + researchStepCost.Type.ToString().ToLower() + " for study.");
+                GameManagerScript.Instance.AdvanceEra();
+                ResearchProgress = 0;                
             }
             else
             {
-                GameManagerScript.Instance.AdvanceEra();
+                DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more units of " + researchStepCost.Type.ToString().ToLower() + " for study.");
             }
         }
     }

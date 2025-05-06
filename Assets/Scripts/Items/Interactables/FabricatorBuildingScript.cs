@@ -29,7 +29,7 @@ namespace FarmerDemo
                     {
                         DialogueManagerScript.Instance.ShowDialogue("We need a few more twigs first.");
                     }
-                        break;
+                    break;
                 case "craft_pickaxe":
                     List<ResourceAmount> pickaxeCost = new List<ResourceAmount>() { 
                         new ResourceAmount(ResourceType.Twig, 5), 

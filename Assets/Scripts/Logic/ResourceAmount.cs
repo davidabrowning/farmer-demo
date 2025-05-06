@@ -1,5 +1,6 @@
 namespace FarmerDemo
 {
+    [System.Serializable]
     public class ResourceAmount
     {
         public ResourceType Type;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
+    [System.Serializable]
     public class PlayerScript : MonoBehaviourSingleton<PlayerScript>
     {
         public List<ResourceAmount> ResourceInventory = new();
@@ -28,6 +29,9 @@ namespace FarmerDemo
             BasketWithFewBerriesVisual.SetActive(false);
             BasketWithBerriesVisual.SetActive(false);
 
+            // Temporary settings for testing/development
+            AddToInventory(ResourceType.Twig, 100);
+            AddToInventory(ResourceType.Berry, 100);
         }
 
         void Update()

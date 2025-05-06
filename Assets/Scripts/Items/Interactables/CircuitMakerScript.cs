@@ -1,4 +1,5 @@
 using FarmerDemo;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +9,27 @@ public class CircuitMakerScript : ItemInteractable, IConstructable
 
     protected override void PopulateActions()
     {
+        Actions.Add(new ObjectAction(this, "craft_circuit", "Make a circuit (2 berry, 2 iron)"));
         Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
     }
     public override void Interact(string actionId)
     {
         switch (actionId)
         {
+            case "craft_circuit":
+                List<ResourceAmount> circuitCost = new List<ResourceAmount>() {
+                        new ResourceAmount(ResourceType.Berry, 2),
+                        new ResourceAmount(ResourceType.Iron, 2)
+                };
+                if (PlayerScript.Instance.HasInInventory(circuitCost))
+                {
+                    StartCoroutine(CraftCircuit(circuitCost));
+                }
+                else
+                {
+                    DialogueManagerScript.Instance.ShowDialogue("We are missing some resources for that.");
+                }
+                break;
             case "deconstruct":
                 PlayerScript.Instance.AddToInventory(ConstructionCosts);
                 Destroy(gameObject);
@@ -29,5 +45,15 @@ public class CircuitMakerScript : ItemInteractable, IConstructable
         List<ResourceAmount> constructionCosts = new();
         constructionCosts.Add(new ResourceAmount(ResourceType.Iron, 7));
         return constructionCosts;
+    }
+
+    private IEnumerator CraftCircuit(List<ResourceAmount> circuitCost)
+    {
+        PlayerScript.Instance.RemoveFromInventory(circuitCost);
+        StartWorkingAnimation();
+        yield return new WaitForSeconds(5);
+        StartIdleAnimation();
+        yield return new WaitForSeconds(1);
+        PlayerScript.Instance.AddToInventory(new ResourceAmount(ResourceType.Circuit, 1));
     }
 }
