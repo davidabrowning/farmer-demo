@@ -50,7 +50,7 @@ namespace FarmerDemo
         private void PlaceObject(GameObject obj)
         {
             obj.transform.SetParent(ParentObject);
-            GridManagerScript.Instance.AddObject(obj);
+            GridManagerScript.Instance.AddItem(obj.GetComponent<ItemBase>());
         }
 
         private Vector2 CalculateVisualCenter(List<Vector2Int> tiles)

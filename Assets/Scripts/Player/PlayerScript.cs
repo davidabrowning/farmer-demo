@@ -8,10 +8,11 @@ namespace FarmerDemo
     public class PlayerScript : MonoBehaviourSingleton<PlayerScript>
     {
         public List<ResourceAmount> ResourceInventory = new();
+        public List<ItemBase> ActivePowerProducers = new();
         public float MoveSpeed = 5f;
         public bool HasBasket = false;
         public bool HasPickaxe = false;
-        public bool ElectricityIsOn = false;
+        public bool ElectricityIsOn { get { return ActivePowerProducers.Count > 0; } }
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
@@ -32,6 +33,9 @@ namespace FarmerDemo
             // Temporary settings for testing/development
             AddToInventory(ResourceType.Twig, 100);
             AddToInventory(ResourceType.Berry, 100);
+            AddToInventory(ResourceType.Circuit, 100);
+            AddToInventory(ResourceType.Iron, 100);
+            AddToInventory(ResourceType.Stone, 100);
         }
 
         void Update()
@@ -94,16 +98,11 @@ namespace FarmerDemo
             HasPickaxe = hasPickaxe;
         }
 
-        public void SetElectricityIsOn(bool electricityIsOn)
-        {
-            ElectricityIsOn = electricityIsOn;
-        }
-
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Twig"))
             {
-                GridManagerScript.Instance.Remove(gameObject);
+                GridManagerScript.Instance.RemoveItem(gameObject.GetComponent<ItemBase>());
                 Destroy(collision.gameObject);
                 AddToInventory(ResourceType.Twig, 1);
                 if (AmountInInventory(ResourceType.Twig) >= 5)

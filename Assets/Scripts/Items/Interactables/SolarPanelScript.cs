@@ -6,6 +6,10 @@ public class SolarPanelScript : ItemInteractable, IConstructable
 {
     public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
 
+    private void Start()
+    {
+        PlayerScript.Instance.ActivePowerProducers.Add(this);
+    }
     protected override void PopulateActions()
     {
         Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
@@ -15,6 +19,7 @@ public class SolarPanelScript : ItemInteractable, IConstructable
         switch (actionId)
         {
             case "deconstruct":
+                PlayerScript.Instance.ActivePowerProducers.Remove(this);
                 PlayerScript.Instance.AddToInventory(ConstructionCosts);
                 Destroy(gameObject);
                 break;

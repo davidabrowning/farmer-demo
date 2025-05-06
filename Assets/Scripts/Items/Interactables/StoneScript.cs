@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class StoneScript : ItemInteractable
+    public class StoneScript : ItemInteractable, IHarvestable
     {
         protected override void PopulateActions()
         {
@@ -26,6 +27,14 @@ namespace FarmerDemo
                     Debug.Log("Unknown action.");
                     break;
             }
+        }
+
+        public List<ResourceAmount> Harvest()
+        {
+            List<ResourceAmount> harvestedStone = new List<ResourceAmount>(){
+                new ResourceAmount(ResourceType.Stone, 1)
+            };
+            return harvestedStone;
         }
     }
 }

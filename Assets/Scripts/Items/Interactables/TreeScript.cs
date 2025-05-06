@@ -1,10 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class TreeScript : ItemInteractable
+    public class TreeScript : ItemInteractable, IHarvestable
     {
         public const int MaxTwigDelay = 100;
         protected override void Start()
@@ -49,6 +50,14 @@ namespace FarmerDemo
                     Debug.Log("Unknown action.");
                     break;
             }
+        }
+
+        public List<ResourceAmount> Harvest()
+        {
+            List<ResourceAmount> harvestedTwigs = new List<ResourceAmount>(){
+                new ResourceAmount(ResourceType.Twig, 1)
+            };
+            return harvestedTwigs;
         }
     }
 }

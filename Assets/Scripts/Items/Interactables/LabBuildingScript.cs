@@ -8,7 +8,6 @@ namespace FarmerDemo
     {
         public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
         public int ResearchProgress = 0;
-        private int currentEraChecker = 0;
 
         private void OnEnable()
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class BerryBushScript : ItemInteractable
+    public class BerryBushScript : ItemInteractable, IHarvestable
     {
         public int BerryCount = 0;
         public float MinBerryGrowthInterval = 2f;
@@ -84,6 +84,15 @@ namespace FarmerDemo
                     Debug.Log("Unknown action.");
                     break;
             }
+        }
+
+        public List<ResourceAmount> Harvest()
+        {
+            List<ResourceAmount> harvestedBerries = new List<ResourceAmount>(){ 
+                new ResourceAmount(ResourceType.Berry, BerryCount)
+            };
+            ClearBerries();
+            return harvestedBerries;
         }
     }
 }

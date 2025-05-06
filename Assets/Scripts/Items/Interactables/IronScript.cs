@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class IronScript : ItemInteractable
+    public class IronScript : ItemInteractable, IHarvestable
     {
         protected override void PopulateActions()
         {
@@ -26,6 +27,14 @@ namespace FarmerDemo
                     Debug.Log("Unknown action.");
                     break;
             }
+        }
+
+        public List<ResourceAmount> Harvest()
+        {
+            List<ResourceAmount> harvestedIron = new List<ResourceAmount>(){
+                new ResourceAmount(ResourceType.Iron, 1)
+            };
+            return harvestedIron;
         }
     }
 }

@@ -47,9 +47,9 @@ public class WoodBurnerScript : ItemInteractable, IConstructable
     private IEnumerator BurnATwig()
     {
         StartWorkingAnimation();
-        PlayerScript.Instance.SetElectricityIsOn(true);
+        PlayerScript.Instance.ActivePowerProducers.Add(this);
         yield return new WaitForSeconds(10);
         StartIdleAnimation();
-        PlayerScript.Instance.SetElectricityIsOn(false);
+        PlayerScript.Instance.ActivePowerProducers.Remove(this);
     }
 }
