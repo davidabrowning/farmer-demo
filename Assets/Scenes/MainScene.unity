@@ -2967,8 +2967,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EraPanel: {fileID: 286178617}
-  EraImage: {fileID: 0}
-  EraText: {fileID: 0}
+  EraImage: {fileID: 71867853}
+  EraText: {fileID: 169419412}
   CurrentEra: 0
 --- !u!1001 &1561063790
 PrefabInstance:
@@ -3589,10 +3589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceInventory: []
+  ActivePowerProducers: []
   MoveSpeed: 3
   HasBasket: 0
   HasPickaxe: 0
-  ElectricityIsOn: 0
   BasketVisual: {fileID: 1451850826}
   BasketWithFewBerriesVisual: {fileID: 94851087}
   BasketWithBerriesVisual: {fileID: 573248896}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3055657797786540137}
   - component: {fileID: 4381720203641163495}
   - component: {fileID: 5069117393003527323}
+  - component: {fileID: 1363097829504410900}
   m_Layer: 0
   m_Name: AutoHarvester
   m_TagString: Untagged
@@ -152,3 +153,25 @@ MonoBehaviour:
   ClockwiseRotationDegrees: 0
   OccupiedTiles: []
   Actions: []
+--- !u!95 &1363097829504410900
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789819782802858214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: b6fd0120ffa0d294ba93568d6ed2163a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
