@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4282480183530774149}
   - component: {fileID: 3294329681671430300}
   m_Layer: 0
-  m_Name: HydroPlant
+  m_Name: SolarPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

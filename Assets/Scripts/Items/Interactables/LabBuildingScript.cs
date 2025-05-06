@@ -9,28 +9,31 @@ namespace FarmerDemo
         public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
         public int ResearchProgress = 0;
         private int currentEraChecker = 0;
+
+        private void OnEnable()
+        {
+            EraManagerScript.Instance.EraUpdate += HandleEraUpdate;
+        }
+        private void OnDisable()
+        {
+            EraManagerScript.Instance.EraUpdate -= HandleEraUpdate;
+        }
+        private void HandleEraUpdate()
+        {
+            Actions.Clear();
+            PopulateActions();
+        }
         protected override void PopulateActions()
         {
-            if (GameManagerScript.Instance.CurrentEra == 0)
+            if (EraManagerScript.Instance.CurrentEra == EraType.Survival)
                 Actions.Add(new ObjectAction(this, "berry_research", "Study berries"));
-            if (GameManagerScript.Instance.CurrentEra == 1)
+            if (EraManagerScript.Instance.CurrentEra == EraType.Power)
                 Actions.Add(new ObjectAction(this, "circuit_research", "Study circuits"));
-            if (GameManagerScript.Instance.CurrentEra == 2)
+            if (EraManagerScript.Instance.CurrentEra == EraType.Automation)
                 Actions.Add(new ObjectAction(this, "fish_research", "Study fish"));
-            if (GameManagerScript.Instance.CurrentEra == 3)
+            if (EraManagerScript.Instance.CurrentEra == EraType.ScientificAdvancement)
                 Actions.Add(new ObjectAction(this, "seed_research", "Study seeds"));
             Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
-        }
-
-        private void Update()
-        {
-            // Update Actions if game era has changed
-            if (GameManagerScript.Instance.CurrentEra != currentEraChecker)
-            {
-                currentEraChecker = GameManagerScript.Instance.CurrentEra;
-                Actions.Clear();
-                PopulateActions();
-            }
         }
 
         public override void Interact(string actionId)
@@ -84,7 +87,7 @@ namespace FarmerDemo
             yield return new WaitForSeconds(1);
             if (ResearchProgress >= 100)
             {
-                GameManagerScript.Instance.AdvanceEra();
+                EraManagerScript.Instance.AdvanceEra();
                 ResearchProgress = 0;                
             }
             else

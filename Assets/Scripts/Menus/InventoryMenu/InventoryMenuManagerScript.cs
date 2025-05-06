@@ -63,15 +63,23 @@ namespace FarmerDemo
             FishInventorySection.SetActive(fishes > 0);
             SeedInventorySection.SetActive(seeds > 0);
 
-            switch (GameManagerScript.Instance.CurrentEra)
+            switch (EraManagerScript.Instance.CurrentEra)
             {
-                case 0:
+                case EraType.Survival:
                     BuildOptionNameMapping.GetValueOrDefault("Fabricator").SetActive(true);
                     BuildOptionNameMapping.GetValueOrDefault("LabBuilding").SetActive(true);
                     break;
-                case 1:
+                case EraType.Power:
                     BuildOptionNameMapping.GetValueOrDefault("WoodBurner").SetActive(true);
                     BuildOptionNameMapping.GetValueOrDefault("CircuitMaker").SetActive(true);
+                    break;
+                case EraType.Automation:
+                    BuildOptionNameMapping.GetValueOrDefault("AutoHarvester").SetActive(true);
+                    BuildOptionNameMapping.GetValueOrDefault("SolarPanel").SetActive(true);
+                    break;
+                case EraType.ScientificAdvancement:
+                    BuildOptionNameMapping.GetValueOrDefault("SeedSplicer").SetActive(true);
+                    BuildOptionNameMapping.GetValueOrDefault("ARM").SetActive(true);
                     break;
             }
         }
@@ -95,7 +103,7 @@ namespace FarmerDemo
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/WoodBurner"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/CircuitMaker"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/AutoHarvester"));
-            BuildList.Add(Resources.Load<GameObject>("Prefabs/World/HydroPlant"));
+            BuildList.Add(Resources.Load<GameObject>("Prefabs/World/SolarPanel"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/SeedSplicer"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/ARM"));
             foreach (GameObject obj in BuildList)

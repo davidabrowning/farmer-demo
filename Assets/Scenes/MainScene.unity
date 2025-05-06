@@ -673,7 +673,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Research complete. Great job! Now beginning the Power phase.
+  m_text: 'Placeholder: Research complete. Great job! Now beginning the PLACEHOLDER
+    phase.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 6b27f647b607bb24a82618a82d07c985, type: 2}
@@ -1523,6 +1524,38 @@ Transform:
   - {fileID: 2762412}
   m_Father: {fileID: 1302638705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &649823897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 649823898}
+  m_Layer: 0
+  m_Name: TimeSystems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &649823898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649823897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1516495480}
+  m_Father: {fileID: 1302638705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &679898617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,8 +1744,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1826375521}
   UIController: {fileID: 1461456293}
-  EraPanel: {fileID: 286178617}
-  CurrentEra: 0
 --- !u!4 &840737331
 Transform:
   m_ObjectHideFlags: 0
@@ -1870,6 +1901,7 @@ MonoBehaviour:
   ItemName: 
   ItemPrefab: {fileID: 0}
   ItemPrefabSize: {x: 0, y: 0}
+  ConstructionCosts: []
 --- !u!4 &1070558474
 Transform:
   m_ObjectHideFlags: 0
@@ -2437,6 +2469,7 @@ Transform:
   - {fileID: 1718809057}
   - {fileID: 589365813}
   - {fileID: 1302181737}
+  - {fileID: 649823898}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1340313438 stripped
@@ -2889,6 +2922,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!1 &1516495479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516495480}
+  - component: {fileID: 1516495481}
+  m_Layer: 0
+  m_Name: EraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516495480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516495479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 649823898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1516495481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516495479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997b7490faaf14346838588c0290b2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EraPanel: {fileID: 286178617}
+  EraImage: {fileID: 0}
+  EraText: {fileID: 0}
+  CurrentEra: 0
 --- !u!1001 &1561063790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3507,6 +3588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a1357ad8c6414468a62a4f2388bf98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResourceInventory: []
   MoveSpeed: 3
   HasBasket: 0
   HasPickaxe: 0
