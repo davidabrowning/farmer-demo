@@ -25,6 +25,8 @@ namespace FarmerDemo
 
                 if (!GridManagerScript.Instance.IsOccupied(targetTiles))
                     GridHighlighterScript.Instance.Highlight(targetTiles);
+                else
+                    GridHighlighterScript.Instance.Hide();
 
                 if (Input.GetMouseButtonDown(1)) // right-click
                     ExitBuildMode();
