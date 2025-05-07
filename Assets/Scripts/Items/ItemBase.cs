@@ -23,8 +23,11 @@ namespace FarmerDemo
 
         protected virtual void Start()
         {
-            PlayerScript.Instance.ElectricityStatusUpdate += HandleElectricityStatusUpdate;
-            HandleElectricityStatusUpdate(); // Update to match initial electricity status
+            if (transform.Find("PowerIndicator") != null)
+            {
+                PlayerScript.Instance.ElectricityStatusUpdate += HandleElectricityStatusUpdate;
+                HandleElectricityStatusUpdate(); // Update to match initial electricity status
+            }
         }
 
         protected virtual void LateUpdate()
@@ -55,8 +58,6 @@ namespace FarmerDemo
         }
         private void HandleElectricityStatusUpdate()
         {
-            if (transform.Find("PowerIndicator") == null)
-                return;
             transform.Find("PowerIndicator").GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * -100 + 1);
             if (PlayerScript.Instance.ElectricityIsOn)
                 transform.Find("PowerIndicator").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Adornments/PowerIndicatorOn");

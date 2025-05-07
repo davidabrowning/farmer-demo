@@ -39,6 +39,7 @@ namespace FarmerDemo
             AddToInventory(ResourceType.Iron, 100);
             AddToInventory(ResourceType.Stone, 100);
             AddToInventory(ResourceType.Fish, 1000);
+            AddToInventory(ResourceType.Seed, 1000);
         }
 
         void Update()

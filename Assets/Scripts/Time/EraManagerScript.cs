@@ -11,6 +11,7 @@ namespace FarmerDemo
         public GameObject EraPanel;
         public Image EraImage;
         public TMP_Text EraText;
+        public TMP_Text StartNextEraButtonText;
         public EraType CurrentEra = EraType.Survival;
         public event Action EraUpdate; // Holds listeners to era updates
 
@@ -20,33 +21,44 @@ namespace FarmerDemo
         }
         public void AdvanceEra()
         {
+            UpdateEraPanelContents();
+            ShowAdvanceEraPanel();
             CurrentEra++;
             EraUpdate.Invoke(); // Notify all listeners that era has updated
-            UpdateEraPanelContents();
-            StartCoroutine(ShowAdvanceEraPanel());
         }
         private void UpdateEraPanelContents()
         {
             switch (CurrentEra)
             {
+                case EraType.Survival:
+                    EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/Berries");
+                    EraText.text = "Research complete!";
+                    StartNextEraButtonText.text = "Begin power phase";
+                    break;
                 case EraType.Power:
-                    EraText.text = "Research complete. Great job! Now beginning the Power phase.";
+                    EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/WoodFire");
+                    EraText.text = "Research complete!";
+                    StartNextEraButtonText.text = "Begin automation phase";
                     break;
                 case EraType.Automation:
-                    EraText.text = "Research complete. Great job! Now beginning the Automation phase.";
+                    EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/RobotField");
+                    EraText.text = "Research complete!";
+                    StartNextEraButtonText.text = "Begin disease research phase";
                     break;
                 case EraType.ScientificAdvancement:
-                    EraText.text = "Research complete. Great job! Now beginning the Scientific Advancement phase.";
-                    break;
-                case EraType.Victory:
+                    EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/PlantBuilding");
                     EraText.text = "Cure research complete. You win the game!";
+                    StartNextEraButtonText.text = "Close";
                     break;
             }
         }
-        private IEnumerator ShowAdvanceEraPanel()
+        public void ShowAdvanceEraPanel()
         {
             EraPanel.SetActive(true);
-            yield return new WaitForSeconds(3);
+        }
+
+        public void HideAdvanceEraPanel()
+        {
             EraPanel.SetActive(false);
         }
     }
