@@ -38,6 +38,9 @@ namespace FarmerDemo
                 case EraType.ScientificAdvancement:
                     EraText.text = "Research complete. Great job! Now beginning the Scientific Advancement phase.";
                     break;
+                case EraType.Victory:
+                    EraText.text = "Cure research complete. You win the game!";
+                    break;
             }
         }
         private IEnumerator ShowAdvanceEraPanel()

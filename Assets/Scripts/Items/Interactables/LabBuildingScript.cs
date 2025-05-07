@@ -80,7 +80,7 @@ namespace FarmerDemo
                 PlayerScript.Instance.RemoveFromInventory(researchStepCost);
                 StartWorkingAnimation();
                 yield return new WaitForSeconds(2);
-                ResearchProgress += 100;
+                ResearchProgress += 10;
             }
             StartIdleAnimation();
             yield return new WaitForSeconds(1);

@@ -8,5 +8,6 @@ namespace FarmerDemo
         Power = 1,
         Automation = 2,
         ScientificAdvancement = 3,
+        Victory = 4,
     }
 }

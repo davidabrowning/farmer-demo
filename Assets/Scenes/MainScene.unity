@@ -2772,6 +2772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45b1d51c8926434e89b70d391b5939f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowInventoryRows: 1
   TwigInventorySection: {fileID: 3595831488624808342}
   TwigInventoryCountText: {fileID: 1343900964649477804}
   BerryInventorySection: {fileID: 1073161650}
@@ -3274,11 +3275,11 @@ PrefabInstance:
       objectReference: {fileID: 1461456295}
     - target: {fileID: 1337826534045553055, guid: 52baa8bfbe142044cb67eecc07f3b10f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: ToggleShowInventoryRows
       objectReference: {fileID: 0}
     - target: {fileID: 1337826534045553055, guid: 52baa8bfbe142044cb67eecc07f3b10f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIControllerScript, Scripts
+      value: FarmerDemo.InventoryMenuManagerScript, Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 1337826534045553055, guid: 52baa8bfbe142044cb67eecc07f3b10f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -3286,7 +3287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1337826534045553055, guid: 52baa8bfbe142044cb67eecc07f3b10f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5702022728708896324, guid: 52baa8bfbe142044cb67eecc07f3b10f, type: 3}
       propertyPath: m_Pivot.x

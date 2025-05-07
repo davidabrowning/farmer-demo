@@ -33,12 +33,12 @@ namespace FarmerDemo
             BasketWithBerriesVisual.SetActive(false);
 
             // Temporary settings for testing/development
-            AddToInventory(ResourceType.Twig, 100);
-            AddToInventory(ResourceType.Berry, 1000);
-            AddToInventory(ResourceType.Circuit, 100);
-            AddToInventory(ResourceType.Iron, 100);
-            AddToInventory(ResourceType.Stone, 100);
-            AddToInventory(ResourceType.Fish, 1000);
+            //AddToInventory(ResourceType.Twig, 100);
+            //AddToInventory(ResourceType.Berry, 1000);
+            //AddToInventory(ResourceType.Circuit, 100);
+            //AddToInventory(ResourceType.Iron, 100);
+            //AddToInventory(ResourceType.Stone, 100);
+            //AddToInventory(ResourceType.Fish, 1000);
         }
 
         void Update()

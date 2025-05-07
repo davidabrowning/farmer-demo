@@ -7,6 +7,7 @@ namespace FarmerDemo
 {
     public class InventoryMenuManagerScript : MonoBehaviourSingleton<InventoryMenuManagerScript>
     {
+        public bool ShowInventoryRows = true;
         public GameObject TwigInventorySection;
         public TMP_Text TwigInventoryCountText;
         public GameObject BerryInventorySection;
@@ -55,13 +56,13 @@ namespace FarmerDemo
             FishInventoryCountText.text = "Fish: " + fishes;
             SeedInventoryCountText.text = "Seeds: " + seeds;
 
-            TwigInventorySection.SetActive(twigs > 0);
-            BerryInventorySection.SetActive(berries > 0);
-            CircuitInventorySection.SetActive(circuits > 0);
-            StoneInventorySection.SetActive(stones > 0);
-            IronInventorySection.SetActive(irons > 0);
-            FishInventorySection.SetActive(fishes > 0);
-            SeedInventorySection.SetActive(seeds > 0);
+            TwigInventorySection.SetActive(twigs > 0 && ShowInventoryRows);
+            BerryInventorySection.SetActive(berries > 0 && ShowInventoryRows);
+            CircuitInventorySection.SetActive(circuits > 0 && ShowInventoryRows);
+            StoneInventorySection.SetActive(stones > 0 && ShowInventoryRows);
+            IronInventorySection.SetActive(irons > 0 && ShowInventoryRows);
+            FishInventorySection.SetActive(fishes > 0 && ShowInventoryRows);
+            SeedInventorySection.SetActive(seeds > 0 && ShowInventoryRows);
 
             switch (EraManagerScript.Instance.CurrentEra)
             {
@@ -93,6 +94,11 @@ namespace FarmerDemo
                 menuSection.SetActive(false);
             else
                 menuSection.SetActive(true);
+        }
+
+        public void ToggleShowInventoryRows()
+        {
+            ShowInventoryRows = !ShowInventoryRows;
         }
 
         private void InstantiateBuildList()

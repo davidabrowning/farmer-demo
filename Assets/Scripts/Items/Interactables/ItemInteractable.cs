@@ -7,8 +7,9 @@ namespace FarmerDemo {
     {
         public List<ObjectAction> Actions = new();
 
-        protected virtual void Start()
+        protected override void Start()
         {
+            base.Start();
             PopulateActions();
         }
 

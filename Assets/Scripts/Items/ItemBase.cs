@@ -21,6 +21,12 @@ namespace FarmerDemo
                 _animator.speed = 0.3f;
         }
 
+        protected virtual void Start()
+        {
+            PlayerScript.Instance.ElectricityStatusUpdate += HandleElectricityStatusUpdate;
+            HandleElectricityStatusUpdate(); // Update to match initial electricity status
+        }
+
         protected virtual void LateUpdate()
         {
             // Multiply by -100 to convert Y to int and get a good range
@@ -46,6 +52,16 @@ namespace FarmerDemo
         protected void StartTravelingAnimation()
         {
             _animator.SetBool("IsTraveling", true);
+        }
+        private void HandleElectricityStatusUpdate()
+        {
+            if (transform.Find("PowerIndicator") == null)
+                return;
+            transform.Find("PowerIndicator").GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * -100 + 1);
+            if (PlayerScript.Instance.ElectricityIsOn)
+                transform.Find("PowerIndicator").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Adornments/PowerIndicatorOn");
+            else
+                transform.Find("PowerIndicator").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Adornments/PowerIndicatorOff");
         }
     }
 }
