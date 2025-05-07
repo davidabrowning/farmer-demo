@@ -19,6 +19,7 @@ namespace FarmerDemo
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
         public GameObject PickaxeVisual;
+        public AudioSource AudioSource;
 
         private Rigidbody2D rb;
         private Vector2 movement;
@@ -31,6 +32,10 @@ namespace FarmerDemo
             BasketVisual.SetActive(false);
             BasketWithFewBerriesVisual.SetActive(false);
             BasketWithBerriesVisual.SetActive(false);
+
+            Animator _animator = GetComponent<Animator>();
+            if (_animator != null)
+                _animator.speed = 0.2f;
 
             // Temporary settings for testing/development
             AddToInventory(ResourceType.Twig, 100);

@@ -33,17 +33,17 @@ namespace FarmerDemo
                 case EraType.Survival:
                     EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/Berries");
                     EraText.text = "Research complete!";
-                    StartNextEraButtonText.text = "Begin power phase";
+                    StartNextEraButtonText.text = "Begin power era";
                     break;
                 case EraType.Power:
                     EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/WoodFire");
                     EraText.text = "Research complete!";
-                    StartNextEraButtonText.text = "Begin automation phase";
+                    StartNextEraButtonText.text = "Begin automation era";
                     break;
                 case EraType.Automation:
                     EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/RobotField");
                     EraText.text = "Research complete!";
-                    StartNextEraButtonText.text = "Begin disease research phase";
+                    StartNextEraButtonText.text = "Begin disease research era";
                     break;
                 case EraType.ScientificAdvancement:
                     EraImage.sprite = Resources.Load<Sprite>("Art/SplashImages/PlantBuilding");

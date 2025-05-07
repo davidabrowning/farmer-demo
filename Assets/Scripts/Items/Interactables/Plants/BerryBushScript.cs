@@ -13,6 +13,9 @@ namespace FarmerDemo
         public Sprite EmptyBushSprite;
         public Sprite OneBerryBushSprite;
         public Sprite TwoBerriesBushSprite;
+        public AudioSource AudioSource;
+        public AudioClip BerryBushRustleSoundClip;
+        public AudioClip BerryGrowthSoundClip;
 
         protected override void Awake()
         {
@@ -65,6 +68,7 @@ namespace FarmerDemo
                 case "collect_berries":
                     if (PlayerScript.Instance.HasBasket)
                     {
+                        PlayerScript.Instance.AudioSource.PlayOneShot(BerryBushRustleSoundClip);
                         PlayerScript.Instance.AddToInventory(ResourceType.Berry, BerryCount);
                         ClearBerries();
                         if (PlayerScript.Instance.AmountInInventory(ResourceType.Berry) > 10)

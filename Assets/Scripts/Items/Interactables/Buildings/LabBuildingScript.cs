@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class LabBuildingScript : ItemInteractableBase, IConstructable
+    public class LabBuildingScript : BuildingBase
     {
-        public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
+        public override List<ResourceAmount> ConstructionCosts { get { return CostCalculator.LaboratoryConstruction(); } }
         public int ResearchProgress = 0;
 
         private void OnEnable()
@@ -24,14 +24,7 @@ namespace FarmerDemo
         }
         protected override void PopulateActions()
         {
-            if (EraManagerScript.Instance.CurrentEra == EraType.Survival)
-                Actions.Add(new ObjectAction(this, "berry_research", "Study berries"));
-            if (EraManagerScript.Instance.CurrentEra == EraType.Power)
-                Actions.Add(new ObjectAction(this, "circuit_research", "Study circuits"));
-            if (EraManagerScript.Instance.CurrentEra == EraType.Automation)
-                Actions.Add(new ObjectAction(this, "fish_research", "Study fish"));
-            if (EraManagerScript.Instance.CurrentEra == EraType.ScientificAdvancement)
-                Actions.Add(new ObjectAction(this, "seed_research", "Study seeds"));
+            Actions.Add(new ObjectAction(this, "research", "Study a sample " + CostCalculator.StandardResearch()));
             Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
         }
 
@@ -39,21 +32,11 @@ namespace FarmerDemo
         {
             switch (actionId)
             {
-                case "berry_research":
-                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Berry, 1)));
-                    break;
-                case "circuit_research":
-                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Circuit, 1)));
-                    break;
-                case "fish_research":
-                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Fish, 1)));
-                    break;
-                case "seed_research":
-                    StartCoroutine(PerformResearch(new ResourceAmount(ResourceType.Seed, 1)));
+                case "research":
+                    StartCoroutine(TryPerformResearch());
                     break;
                 case "deconstruct":
-                    PlayerScript.Instance.AddToInventory(ConstructionCosts);
-                    Destroy(gameObject);
+                    Deconstruct();
                     break;
                 default:
                     Debug.Log("Unknown action");
@@ -61,23 +44,16 @@ namespace FarmerDemo
             }
         }
 
-        private List<ResourceAmount> GetConstructionCosts()
+        private IEnumerator TryPerformResearch()
         {
-            List<ResourceAmount> constructionCosts = new();
-            constructionCosts.Add(new ResourceAmount(ResourceType.Berry, 6));
-            return constructionCosts;
-        }
-
-        private IEnumerator PerformResearch(ResourceAmount researchStepCost)
-        {
-            if (!PlayerScript.Instance.HasInInventory(researchStepCost))
+            if (!PlayerScript.Instance.HasInInventory(CostCalculator.StandardResearch()))
             {
-                DialogueManagerScript.Instance.ShowDialogue("We don't have any units of " + researchStepCost.Type.ToString().ToLower() + ".");
+                DialogueManagerScript.Instance.ShowDialogue("We don't have any units of " + CostCalculator.StandardResearch().Type.ToString().ToLower() + ".");
                 yield break;
             }
-            while (ResearchProgress < 100 && PlayerScript.Instance.HasInInventory(researchStepCost))
+            while (ResearchProgress < 100 && PlayerScript.Instance.HasInInventory(CostCalculator.StandardResearch()))
             {
-                PlayerScript.Instance.RemoveFromInventory(researchStepCost);
+                PlayerScript.Instance.RemoveFromInventory(CostCalculator.StandardResearch());
                 StartWorkingAnimation();
                 yield return new WaitForSeconds(2);
                 ResearchProgress += 10;
@@ -91,7 +67,7 @@ namespace FarmerDemo
             }
             else
             {
-                DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more units of " + researchStepCost.Type.ToString().ToLower() + " for study.");
+                DialogueManagerScript.Instance.ShowDialogue("Research progress: " + ResearchProgress + "%. We need to input a few more units of " + CostCalculator.StandardResearch().Type.ToString().ToLower() + " for study.");
             }
         }
     }

@@ -1,86 +1,77 @@
-using FarmerDemo;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class AutoHarvesterScript : ItemInteractableBase, IConstructable
+namespace FarmerDemo
 {
-    public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
+    public class AutoHarvesterScript : BuildingBase
+    {
+        public override List<ResourceAmount> ConstructionCosts { get { return CostCalculator.AutoHarvesterConstruction(); } }
 
-    protected override void Start()
-    {
-        base.Start();
-        StartCoroutine(AutoHarvestAdjacentTiles());
-    }
-    protected override void PopulateActions()
-    {
-        Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
-    }
-    public override void Interact(string actionId)
-    {
-        switch (actionId)
+        protected override void Start()
         {
-            case "deconstruct":
-                PlayerScript.Instance.AddToInventory(ConstructionCosts);
-                Destroy(gameObject);
-                break;
-            default:
-                Debug.Log("Unknown action");
-                break;
+            base.Start();
+            StartCoroutine(AutoHarvestAdjacentTiles());
         }
-    }
-
-    private List<ResourceAmount> GetConstructionCosts()
-    {
-        List<ResourceAmount> constructionCosts = new();
-        constructionCosts.Add(new ResourceAmount(ResourceType.Circuit, 2));
-        constructionCosts.Add(new ResourceAmount(ResourceType.Berry, 5));
-        return constructionCosts;
-    }
-
-    private IEnumerator AutoHarvestAdjacentTiles()
-    {
-        while(true)
+        protected override void PopulateActions()
         {
-            yield return new WaitForSeconds(3);
-            if (PlayerScript.Instance.ElectricityIsOn)
+            Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
+        }
+        public override void Interact(string actionId)
+        {
+            switch (actionId)
             {
-                StartWorkingAnimation();
-                AutoHarvestTile(AnchorPosition + Vector2Int.left);
-                AutoHarvestTile(AnchorPosition + Vector2Int.up);
-                AutoHarvestTile(AnchorPosition + Vector2Int.right);
-                AutoHarvestTile(AnchorPosition + Vector2Int.down);
-            }
-            else
-            {
-                StartIdleAnimation();
+                case "deconstruct":
+                    Deconstruct();
+                    break;
+                default:
+                    Debug.Log("Unknown action");
+                    break;
             }
         }
-    }
 
-    private void AutoHarvestTile(Vector2Int location)
-    {
-        AutoHarvestItem(location);
-        AutoHarvestRegionType(location);
-    }
-
-    private void AutoHarvestItem(Vector2Int location)
-    {
-        ItemBase item = GridManagerScript.Instance.GetItemAt(location);
-        if (item != null && item is IHarvestable)
+        private IEnumerator AutoHarvestAdjacentTiles()
         {
-            IHarvestable harvestable = (IHarvestable)item;
-            PlayerScript.Instance.AddToInventory(harvestable.Harvest());
+            while (true)
+            {
+                yield return new WaitForSeconds(3);
+                if (PlayerScript.Instance.ElectricityIsOn)
+                {
+                    StartWorkingAnimation();
+                    AutoHarvestTile(AnchorPosition + Vector2Int.left);
+                    AutoHarvestTile(AnchorPosition + Vector2Int.up);
+                    AutoHarvestTile(AnchorPosition + Vector2Int.right);
+                    AutoHarvestTile(AnchorPosition + Vector2Int.down);
+                }
+                else
+                {
+                    StartIdleAnimation();
+                }
+            }
         }
-    }
 
-    private void AutoHarvestRegionType(Vector2Int location)
-    {
-        if (TileBuilderScript.Instance.GetRegionType(location) == RegionTypeEnum.Water)
+        private void AutoHarvestTile(Vector2Int location)
         {
-            PlayerScript.Instance.AddToInventory(ResourceType.Fish, 1);
+            AutoHarvestItem(location);
+            AutoHarvestRegionType(location);
+        }
+
+        private void AutoHarvestItem(Vector2Int location)
+        {
+            ItemBase item = GridManagerScript.Instance.GetItemAt(location);
+            if (item != null && item is IHarvestable)
+            {
+                IHarvestable harvestable = (IHarvestable)item;
+                PlayerScript.Instance.AddToInventory(harvestable.Harvest());
+            }
+        }
+
+        private void AutoHarvestRegionType(Vector2Int location)
+        {
+            if (TileBuilderScript.Instance.GetRegionType(location) == RegionTypeEnum.Water)
+            {
+                PlayerScript.Instance.AddToInventory(ResourceType.Fish, 1);
+            }
         }
     }
 }

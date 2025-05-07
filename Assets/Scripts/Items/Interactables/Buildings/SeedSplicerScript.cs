@@ -1,64 +1,52 @@
-using FarmerDemo;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeedSplicerScript : ItemInteractableBase, IConstructable
+namespace FarmerDemo
 {
-    public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
+    public class SeedSplicerScript : BuildingBase
+    {
+        public override List<ResourceAmount> ConstructionCosts { get { return CostCalculator.SeedSplicerConstruction(); } }
 
-    protected override void PopulateActions()
-    {
-        Actions.Add(new ObjectAction(this, "splice_seeds", "Splice seeds (100 berry, 100 fish, 1 circuit)"));
-        Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
-    }
-    public override void Interact(string actionId)
-    {
-        switch (actionId)
+        protected override void PopulateActions()
         {
-            case "splice_seeds":
-                List<ResourceAmount> spliceCost = new List<ResourceAmount>() {
-                        new ResourceAmount(ResourceType.Berry, 100),
-                        new ResourceAmount(ResourceType.Fish, 100),
-                        new ResourceAmount(ResourceType.Circuit, 1)
-                };
-                if (!PlayerScript.Instance.ElectricityIsOn)
-                {
-                    DialogueManagerScript.Instance.ShowDialogue("The seed splicer requires electricity!");
-                    break;
-                }
-                if (!PlayerScript.Instance.HasInInventory(spliceCost))
-                {
-                    DialogueManagerScript.Instance.ShowDialogue("We are missing some resources for that.");
-                    break;
-                }
-                StartCoroutine(SpliceSeeds(spliceCost));
-                break;
-            case "deconstruct":
-                PlayerScript.Instance.AddToInventory(ConstructionCosts);
-                Destroy(gameObject);
-                break;
-            default:
-                Debug.Log("Unknown action");
-                break;
+            Actions.Add(new ObjectAction(this, "splice_seeds", "Splice seeds " + ResourceAmount.ListOut(CostCalculator.SplicedSeeds())));
+            Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
         }
-    }
+        public override void Interact(string actionId)
+        {
+            switch (actionId)
+            {
+                case "splice_seeds":
+                    StartCoroutine(TrySpliceSeeds());
+                    break;
+                case "deconstruct":
+                    Deconstruct();
+                    break;
+                default:
+                    Debug.Log("Unknown action");
+                    break;
+            }
+        }
 
-    private List<ResourceAmount> GetConstructionCosts()
-    {
-        List<ResourceAmount> constructionCosts = new();
-        constructionCosts.Add(new ResourceAmount(ResourceType.Circuit, 3));
-        constructionCosts.Add(new ResourceAmount(ResourceType.Stone, 5));
-        return constructionCosts;
-    }
-
-    private IEnumerator SpliceSeeds(List<ResourceAmount> spliceCost)
-    {
-        PlayerScript.Instance.RemoveFromInventory(spliceCost);
-        StartWorkingAnimation();
-        yield return new WaitForSeconds(5);
-        StartIdleAnimation();
-        yield return new WaitForSeconds(1);
-        PlayerScript.Instance.AddToInventory(new ResourceAmount(ResourceType.Seed, 1));
+        private IEnumerator TrySpliceSeeds()
+        {
+            if (!PlayerScript.Instance.ElectricityIsOn)
+            {
+                DialogueManagerScript.Instance.ShowDialogue("The seed splicer requires electricity!");
+                yield break;
+            }
+            if (!PlayerScript.Instance.HasInInventory(CostCalculator.SplicedSeeds()))
+            {
+                DialogueManagerScript.Instance.ShowDialogue("We are missing some resources for that.");
+                yield break;
+            }
+            PlayerScript.Instance.RemoveFromInventory(CostCalculator.SplicedSeeds());
+            StartWorkingAnimation();
+            yield return new WaitForSeconds(5);
+            StartIdleAnimation();
+            yield return new WaitForSeconds(1);
+            PlayerScript.Instance.AddToInventory(new ResourceAmount(ResourceType.Seed, 1));
+        }
     }
 }
