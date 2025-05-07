@@ -177,13 +177,15 @@ namespace FarmerDemo
         public void AddActivePowerProducer(ItemBase activePowerProducer)
         {
             ActivePowerProducers.Add(activePowerProducer);
-            ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
+            if (ElectricityStatusUpdate != null)
+                ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
         }
 
         public void RemoveActivePowerProducer(ItemBase powerProducer)
         {
             ActivePowerProducers.Remove(powerProducer);
-            ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
+            if (ElectricityStatusUpdate != null)
+                ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
         }
 
     }
