@@ -26,6 +26,12 @@ namespace FarmerDemo
                 if (!GridManagerScript.Instance.IsOccupied(targetTiles))
                     GridHighlighterScript.Instance.Highlight(targetTiles);
 
+                if (Input.GetMouseButtonDown(1)) // right-click
+                    ExitBuildMode();
+
+                if (Input.GetKeyDown(KeyCode.Escape)) // escape key
+                    ExitBuildMode();
+
                 if (Input.GetMouseButtonDown(0)) // left-click
                 {
                     if (PlayerScript.Instance.HasInInventory(ConstructionCosts))
