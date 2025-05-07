@@ -6,8 +6,9 @@ public class SolarPanelScript : ItemInteractable, IConstructable
 {
     public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         PlayerScript.Instance.AddActivePowerProducer(this);
     }
     protected override void PopulateActions()
