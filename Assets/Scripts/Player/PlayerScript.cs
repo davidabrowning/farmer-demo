@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace FarmerDemo
         public bool HasBasket = false;
         public bool HasPickaxe = false;
         public bool ElectricityIsOn { get { return ActivePowerProducers.Count > 0; } }
+        public event Action ElectricityStatusUpdate; // Holds listeners to electricity updates
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
@@ -170,5 +172,18 @@ namespace FarmerDemo
                 output += resourceAmount.ToString();
             return output;
         }
+
+        public void AddActivePowerProducer(ItemBase activePowerProducer)
+        {
+            ActivePowerProducers.Add(activePowerProducer);
+            ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
+        }
+
+        public void RemoveActivePowerProducer(ItemBase powerProducer)
+        {
+            ActivePowerProducers.Remove(powerProducer);
+            ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
+        }
+
     }
 }

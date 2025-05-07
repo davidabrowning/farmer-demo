@@ -12,11 +12,19 @@ public class AutoHarvesterScript : ItemInteractable, IConstructable
     protected override void Start()
     {
         base.Start();
+        PlayerScript.Instance.ElectricityStatusUpdate += HandleElectricityStatusUpdate;
         StartCoroutine(AutoHarvestAdjacentTiles());
     }
     protected override void PopulateActions()
     {
         Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
+    }
+    private void HandleElectricityStatusUpdate()
+    {
+        if (PlayerScript.Instance.ElectricityIsOn)
+            transform.Find("PowerIndicator").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Adornments/PowerIndicatorOn");
+        else
+            transform.Find("PowerIndicator").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Adornments/PowerIndicatorOff");
     }
     public override void Interact(string actionId)
     {
@@ -47,10 +55,15 @@ public class AutoHarvesterScript : ItemInteractable, IConstructable
             yield return new WaitForSeconds(3);
             if (PlayerScript.Instance.ElectricityIsOn)
             {
+                StartWorkingAnimation();
                 AutoHarvestTile(AnchorPosition + Vector2Int.left);
                 AutoHarvestTile(AnchorPosition + Vector2Int.up);
                 AutoHarvestTile(AnchorPosition + Vector2Int.right);
                 AutoHarvestTile(AnchorPosition + Vector2Int.down);
+            }
+            else
+            {
+                StartIdleAnimation();
             }
         }
     }

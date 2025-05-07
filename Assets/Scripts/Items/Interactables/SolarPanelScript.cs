@@ -8,7 +8,7 @@ public class SolarPanelScript : ItemInteractable, IConstructable
 
     private void Start()
     {
-        PlayerScript.Instance.ActivePowerProducers.Add(this);
+        PlayerScript.Instance.AddActivePowerProducer(this);
     }
     protected override void PopulateActions()
     {
@@ -19,7 +19,7 @@ public class SolarPanelScript : ItemInteractable, IConstructable
         switch (actionId)
         {
             case "deconstruct":
-                PlayerScript.Instance.ActivePowerProducers.Remove(this);
+                PlayerScript.Instance.RemoveActivePowerProducer(this);
                 PlayerScript.Instance.AddToInventory(ConstructionCosts);
                 Destroy(gameObject);
                 break;
