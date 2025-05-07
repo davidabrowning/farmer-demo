@@ -9,7 +9,7 @@ public class CircuitMakerScript : ItemInteractable, IConstructable
 
     protected override void PopulateActions()
     {
-        Actions.Add(new ObjectAction(this, "craft_circuit", "Make a circuit (2 berry, 2 iron)"));
+        Actions.Add(new ObjectAction(this, "craft_circuit", "Make a batch of 5 circuits (2 berry, 2 iron)"));
         Actions.Add(new ObjectAction(this, "deconstruct", "Deconstruct"));
     }
     public override void Interact(string actionId)
@@ -57,6 +57,6 @@ public class CircuitMakerScript : ItemInteractable, IConstructable
         yield return new WaitForSeconds(5);
         StartIdleAnimation();
         yield return new WaitForSeconds(1);
-        PlayerScript.Instance.AddToInventory(new ResourceAmount(ResourceType.Circuit, 1));
+        PlayerScript.Instance.AddToInventory(new ResourceAmount(ResourceType.Circuit, 5));
     }
 }
