@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class FabricatorBuildingScript : ItemInteractable, IConstructable
+    public class FabricatorBuildingScript : ItemInteractableBase, IConstructable
     {
         public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
 

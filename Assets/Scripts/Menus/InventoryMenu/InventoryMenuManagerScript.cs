@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace FarmerDemo
 {
-    public class InventoryMenuManagerScript : MonoBehaviourSingleton<InventoryMenuManagerScript>
+    public class InventoryMenuManagerScript : MonoBehaviourSingletonBase<InventoryMenuManagerScript>
     {
         public bool ShowInventoryRows = true;
         public GameObject TwigInventorySection;

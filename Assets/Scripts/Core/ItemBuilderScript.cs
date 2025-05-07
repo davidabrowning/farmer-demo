@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class ItemBuilderScript : MonoBehaviourSingleton<ItemBuilderScript>
+    public class ItemBuilderScript : MonoBehaviourSingletonBase<ItemBuilderScript>
     {
         private GameObject _prefab;
         public Transform ParentObject;

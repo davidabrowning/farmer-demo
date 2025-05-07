@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FarmerDemo
 {
     [System.Serializable]
-    public class PlayerScript : MonoBehaviourSingleton<PlayerScript>
+    public class PlayerScript : MonoBehaviourSingletonBase<PlayerScript>
     {
         public List<ResourceAmount> ResourceInventory = new();
         public List<ItemBase> ActivePowerProducers = new();

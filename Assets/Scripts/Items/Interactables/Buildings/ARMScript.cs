@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ARMScript : ItemInteractable, IConstructable
+public class ARMScript : BuildingBase
 {
-    public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
+    public override List<ResourceAmount> ConstructionCosts { get { return new() {
+        new ResourceAmount(ResourceType.Circuit, 50),
+        new ResourceAmount(ResourceType.Iron, 50)
+    }; } }
 
     protected override void PopulateActions()
     {
@@ -41,14 +44,6 @@ public class ARMScript : ItemInteractable, IConstructable
                 Debug.Log("Unknown action");
                 break;
         }
-    }
-
-    private List<ResourceAmount> GetConstructionCosts()
-    {
-        List<ResourceAmount> constructionCosts = new();
-        constructionCosts.Add(new ResourceAmount(ResourceType.Circuit, 50));
-        constructionCosts.Add(new ResourceAmount(ResourceType.Iron, 50));
-        return constructionCosts;
     }
 
     private IEnumerator ResearchCure(List<ResourceAmount> researchCost)

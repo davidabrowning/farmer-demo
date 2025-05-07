@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class DialogueManagerScript : MonoBehaviourSingleton<DialogueManagerScript>
+    public class DialogueManagerScript : MonoBehaviourSingletonBase<DialogueManagerScript>
     {
         public GameObject DialoguePanel;
         public GameObject DialogueSpeaker;

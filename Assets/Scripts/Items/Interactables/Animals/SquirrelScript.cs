@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class SquirrelScript : Animal
+    public class SquirrelScript : AnimalBase
     {
 
         protected override void Start()

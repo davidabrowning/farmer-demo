@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace FarmerDemo {
-    public abstract class ItemInteractable : ItemBase
+    public abstract class ItemInteractableBase : ItemBase
     {
         public List<ObjectAction> Actions = new();
 

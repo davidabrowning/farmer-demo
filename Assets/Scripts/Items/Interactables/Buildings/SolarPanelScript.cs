@@ -2,7 +2,7 @@ using FarmerDemo;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SolarPanelScript : ItemInteractable, IConstructable
+public class SolarPanelScript : ItemInteractableBase, IConstructable
 {
     public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
 

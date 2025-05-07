@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodBurnerScript : ItemInteractable, IConstructable
+public class WoodBurnerScript : ItemInteractableBase, IConstructable
 {
     public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
 

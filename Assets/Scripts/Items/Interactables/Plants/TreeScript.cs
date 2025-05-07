@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class TreeScript : ItemInteractable, IHarvestable
+    public class TreeScript : ItemInteractableBase, IHarvestable
     {
         public const int MaxTwigDelay = 100;
         protected override void Start()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class ConstructionManagerScript : MonoBehaviourSingleton<ConstructionManagerScript>
+    public class ConstructionManagerScript : MonoBehaviourSingletonBase<ConstructionManagerScript>
     {
         public bool BuildModeOn = false;
         public string ItemName = "";

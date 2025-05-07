@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public abstract class Animal : ItemBase
+    public abstract class AnimalBase : ItemBase
     {
         public float MovementSpeed = 1f;
         public float PauseTimeBetweenMoves = 5f;

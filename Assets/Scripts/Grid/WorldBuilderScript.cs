@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class WorldBuilderScript : MonoBehaviourSingleton<WorldBuilderScript>
+    public class WorldBuilderScript : MonoBehaviourSingletonBase<WorldBuilderScript>
     {
         public void BuildInitialWorld()
         {

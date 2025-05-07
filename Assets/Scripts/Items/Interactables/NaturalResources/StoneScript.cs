@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class StoneScript : ItemInteractable, IHarvestable
+    public class StoneScript : ItemInteractableBase, IHarvestable
     {
         protected override void PopulateActions()
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class BerryBushScript : ItemInteractable, IHarvestable
+    public class BerryBushScript : ItemInteractableBase, IHarvestable
     {
         public int BerryCount = 0;
         public float MinBerryGrowthInterval = 2f;

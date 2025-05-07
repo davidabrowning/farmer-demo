@@ -8,7 +8,7 @@ namespace FarmerDemo
         public GameObject MenuCanvas;
         public GameObject MenuPrefab;
         private GameObject _currentMenu;
-        private ItemInteractable _clickedInteractable;
+        private ItemInteractableBase _clickedInteractable;
 
         void Update()
         {
@@ -28,7 +28,7 @@ namespace FarmerDemo
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit.collider != null)
             {
-                ItemInteractable interactable = hit.collider.GetComponentInParent<ItemInteractable>();
+                ItemInteractableBase interactable = hit.collider.GetComponentInParent<ItemInteractableBase>();
                 if (interactable != null)
                 {
                     _clickedInteractable = interactable;

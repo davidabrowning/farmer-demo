@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class RegionBuilderScript : MonoBehaviourSingleton<RegionBuilderScript>
+    public class RegionBuilderScript : MonoBehaviourSingletonBase<RegionBuilderScript>
     {
         private int _regionSize = 10;
 

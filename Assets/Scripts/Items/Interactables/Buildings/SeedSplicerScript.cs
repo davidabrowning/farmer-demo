@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeedSplicerScript : ItemInteractable, IConstructable
+public class SeedSplicerScript : ItemInteractableBase, IConstructable
 {
     public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
 

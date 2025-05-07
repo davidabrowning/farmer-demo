@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class GridHighlighterScript : MonoBehaviourSingleton<GridHighlighterScript>
+    public class GridHighlighterScript : MonoBehaviourSingletonBase<GridHighlighterScript>
     {
         public GameObject HighlightPrefab;
         private List<GameObject> _currentHighlights = new();

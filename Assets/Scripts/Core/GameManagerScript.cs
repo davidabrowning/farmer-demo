@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class GameManagerScript : MonoBehaviourSingleton<GameManagerScript>
+    public class GameManagerScript : MonoBehaviourSingletonBase<GameManagerScript>
     {
         public GameObject Player;
         public GameObject UIController;

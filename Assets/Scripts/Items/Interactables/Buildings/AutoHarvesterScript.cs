@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class AutoHarvesterScript : ItemInteractable, IConstructable
+public class AutoHarvesterScript : ItemInteractableBase, IConstructable
 {
     public List<ResourceAmount> ConstructionCosts { get { return GetConstructionCosts(); } }
 

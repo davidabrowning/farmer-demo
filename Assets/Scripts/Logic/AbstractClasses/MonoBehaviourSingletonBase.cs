@@ -2,7 +2,7 @@
 
 namespace FarmerDemo
 {
-    public abstract class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class MonoBehaviourSingletonBase<T> : MonoBehaviour where T : MonoBehaviour
     {
         public static T Instance;
         protected virtual void Awake()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class GridManagerScript : MonoBehaviourSingleton<GridManagerScript>
+    public class GridManagerScript : MonoBehaviourSingletonBase<GridManagerScript>
     {
         private List<ItemBase> placedItems = new();
         public bool IsOccupied(Vector2Int cell)

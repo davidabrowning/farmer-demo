@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace FarmerDemo
 {
-    public class EraManagerScript : MonoBehaviourSingleton<EraManagerScript>
+    public class EraManagerScript : MonoBehaviourSingletonBase<EraManagerScript>
     {
         public GameObject EraPanel;
         public Image EraImage;
