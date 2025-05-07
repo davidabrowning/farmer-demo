@@ -43,7 +43,8 @@ namespace FarmerDemo
 
         protected void StartIdleAnimation()
         {
-            _animator.SetBool("IsWorking", false);
+            if (_animator.GetBool("IsWorking") != null)
+                _animator.SetBool("IsWorking", false);
             _animator.SetBool("IsTraveling", false);
         }
 

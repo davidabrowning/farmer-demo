@@ -1,26 +1,23 @@
-using Codice.CM.Common;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class SquirrelScript : ItemBase
+    public abstract class Animal : ItemBase
     {
         public float MovementSpeed = 1f;
         public float PauseTimeBetweenMoves = 5f;
         public Vector2Int _targetPosition;
 
-        void Start()
+        protected override void Start()
         {
-            AdjustAnimationSpeed(7);
+            base.Start();
             StartCoroutine(MoveAround());
             SetRandomTargetPosition();
         }
-
-        private IEnumerator MoveAround()
+        protected IEnumerator MoveAround()
         {
-            while(true)
+            while (true)
             {
                 StartIdleAnimation();
                 yield return new WaitForSeconds(Random.Range(1, PauseTimeBetweenMoves));
@@ -29,18 +26,18 @@ namespace FarmerDemo
                 StartTravelingAnimation();
                 yield return new WaitForSeconds(0.2f);
 
-                while ((Vector2) transform.position != _targetPosition)
+                while ((Vector2)transform.position != _targetPosition)
                 {
                     yield return new WaitForSeconds(0.01f);
                     float movementProgress = Time.deltaTime * MovementSpeed;
                     transform.position = Vector2.MoveTowards(transform.position, _targetPosition, movementProgress);
                     AnchorPosition.x = (int)Mathf.Round(transform.position.x);
                     AnchorPosition.y = (int)Mathf.Round(transform.position.y);
-                } 
+                }
             }
         }
 
-        void SetRandomTargetPosition()
+        public void SetRandomTargetPosition()
         {
             int attempts = 0;
             while (attempts < 10)
