@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace FarmerDemo
 {
-    public class TileBuilderScript : MonoBehaviourSingleton<TileBuilderScript>
+    public class TileBuilderScript : MonoBehaviourSingletonBase<TileBuilderScript>
     {
         public GameObject TileFolder;
         public GameObject DirtBackground;

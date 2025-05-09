@@ -1,18 +1,25 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class PlayerScript : MonoBehaviourSingleton<PlayerScript>
+    [System.Serializable]
+    public class PlayerScript : MonoBehaviourSingletonBase<PlayerScript>
     {
         public List<ResourceAmount> ResourceInventory = new();
+        public List<ItemBase> ActivePowerProducers = new();
         public float MoveSpeed = 5f;
         public bool HasBasket = false;
-        public bool HasDrill = false;
+        public bool HasPickaxe = false;
+        public bool ElectricityIsOn { get { return ActivePowerProducers.Count > 0; } }
+        public event Action ElectricityStatusUpdate; // Holds listeners to electricity updates
         public GameObject BasketVisual;
         public GameObject BasketWithFewBerriesVisual;
         public GameObject BasketWithBerriesVisual;
+        public GameObject PickaxeVisual;
+        public AudioSource AudioSource;
 
         private Rigidbody2D rb;
         private Vector2 movement;
@@ -25,6 +32,19 @@ namespace FarmerDemo
             BasketVisual.SetActive(false);
             BasketWithFewBerriesVisual.SetActive(false);
             BasketWithBerriesVisual.SetActive(false);
+
+            Animator _animator = GetComponent<Animator>();
+            if (_animator != null)
+                _animator.speed = 0.2f;
+
+            // Temporary settings for testing/development
+            AddToInventory(ResourceType.Twig, 100);
+            AddToInventory(ResourceType.Berry, 1000);
+            AddToInventory(ResourceType.Circuit, 100);
+            AddToInventory(ResourceType.Iron, 100);
+            AddToInventory(ResourceType.Stone, 100);
+            AddToInventory(ResourceType.Fish, 1000);
+            AddToInventory(ResourceType.Seed, 1000);
         }
 
         void Update()
@@ -55,6 +75,8 @@ namespace FarmerDemo
                     BasketWithBerriesVisual.SetActive(true);
                 }
             }
+
+            PickaxeVisual.SetActive(HasPickaxe);
         }
 
         void FixedUpdate()
@@ -80,11 +102,16 @@ namespace FarmerDemo
             HasBasket = hasBasket;
         }
 
+        public void SetHasPickaxe(bool hasPickaxe)
+        {
+            HasPickaxe = hasPickaxe;
+        }
+
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Twig"))
             {
-                GridManagerScript.Instance.Remove(gameObject);
+                GridManagerScript.Instance.RemoveItem(gameObject.GetComponent<ItemBase>());
                 Destroy(collision.gameObject);
                 AddToInventory(ResourceType.Twig, 1);
                 if (AmountInInventory(ResourceType.Twig) >= 5)
@@ -151,5 +178,20 @@ namespace FarmerDemo
                 output += resourceAmount.ToString();
             return output;
         }
+
+        public void AddActivePowerProducer(ItemBase activePowerProducer)
+        {
+            ActivePowerProducers.Add(activePowerProducer);
+            if (ElectricityStatusUpdate != null)
+                ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
+        }
+
+        public void RemoveActivePowerProducer(ItemBase powerProducer)
+        {
+            ActivePowerProducers.Remove(powerProducer);
+            if (ElectricityStatusUpdate != null)
+                ElectricityStatusUpdate.Invoke(); // Notify all listeners that power status has updated
+        }
+
     }
 }

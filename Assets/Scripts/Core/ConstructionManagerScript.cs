@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class ConstructionManagerScript : MonoBehaviourSingleton<ConstructionManagerScript>
+    public class ConstructionManagerScript : MonoBehaviourSingletonBase<ConstructionManagerScript>
     {
         public bool BuildModeOn = false;
         public string ItemName = "";
@@ -25,6 +25,14 @@ namespace FarmerDemo
 
                 if (!GridManagerScript.Instance.IsOccupied(targetTiles))
                     GridHighlighterScript.Instance.Highlight(targetTiles);
+                else
+                    GridHighlighterScript.Instance.Hide();
+
+                if (Input.GetMouseButtonDown(1)) // right-click
+                    ExitBuildMode();
+
+                if (Input.GetKeyDown(KeyCode.Escape)) // escape key
+                    ExitBuildMode();
 
                 if (Input.GetMouseButtonDown(0)) // left-click
                 {

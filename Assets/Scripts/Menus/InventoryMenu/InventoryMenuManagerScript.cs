@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 namespace FarmerDemo
 {
-    public class InventoryMenuManagerScript : MonoBehaviourSingleton<InventoryMenuManagerScript>
+    public class InventoryMenuManagerScript : MonoBehaviourSingletonBase<InventoryMenuManagerScript>
     {
+        public bool ShowInventoryRows = true;
         public GameObject TwigInventorySection;
         public TMP_Text TwigInventoryCountText;
         public GameObject BerryInventorySection;
@@ -55,20 +56,31 @@ namespace FarmerDemo
             FishInventoryCountText.text = "Fish: " + fishes;
             SeedInventoryCountText.text = "Seeds: " + seeds;
 
-            TwigInventorySection.SetActive(twigs > 0);
-            BerryInventorySection.SetActive(berries > 0);
-            CircuitInventorySection.SetActive(circuits > 0);
-            StoneInventorySection.SetActive(stones > 0);
-            IronInventorySection.SetActive(irons > 0);
-            FishInventorySection.SetActive(fishes > 0);
-            SeedInventorySection.SetActive(seeds > 0);
+            TwigInventorySection.SetActive(twigs > 0 && ShowInventoryRows);
+            BerryInventorySection.SetActive(berries > 0 && ShowInventoryRows);
+            CircuitInventorySection.SetActive(circuits > 0 && ShowInventoryRows);
+            StoneInventorySection.SetActive(stones > 0 && ShowInventoryRows);
+            IronInventorySection.SetActive(irons > 0 && ShowInventoryRows);
+            FishInventorySection.SetActive(fishes > 0 && ShowInventoryRows);
+            SeedInventorySection.SetActive(seeds > 0 && ShowInventoryRows);
 
-            int phase = 0;
-            switch (phase)
+            switch (EraManagerScript.Instance.CurrentEra)
             {
-                case 0:
+                case EraType.Survival:
                     BuildOptionNameMapping.GetValueOrDefault("Fabricator").SetActive(true);
                     BuildOptionNameMapping.GetValueOrDefault("LabBuilding").SetActive(true);
+                    break;
+                case EraType.Power:
+                    BuildOptionNameMapping.GetValueOrDefault("WoodBurner").SetActive(true);
+                    BuildOptionNameMapping.GetValueOrDefault("CircuitMaker").SetActive(true);
+                    break;
+                case EraType.Automation:
+                    BuildOptionNameMapping.GetValueOrDefault("AutoHarvester").SetActive(true);
+                    BuildOptionNameMapping.GetValueOrDefault("SolarPanel").SetActive(true);
+                    break;
+                case EraType.ScientificAdvancement:
+                    BuildOptionNameMapping.GetValueOrDefault("SeedSplicer").SetActive(true);
+                    BuildOptionNameMapping.GetValueOrDefault("ARM").SetActive(true);
                     break;
             }
         }
@@ -84,6 +96,11 @@ namespace FarmerDemo
                 menuSection.SetActive(true);
         }
 
+        public void ToggleShowInventoryRows()
+        {
+            ShowInventoryRows = !ShowInventoryRows;
+        }
+
         private void InstantiateBuildList()
         {
             BuildList = new();
@@ -92,7 +109,7 @@ namespace FarmerDemo
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/WoodBurner"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/CircuitMaker"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/AutoHarvester"));
-            BuildList.Add(Resources.Load<GameObject>("Prefabs/World/HydroPlant"));
+            BuildList.Add(Resources.Load<GameObject>("Prefabs/World/SolarPanel"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/SeedSplicer"));
             BuildList.Add(Resources.Load<GameObject>("Prefabs/World/ARM"));
             foreach (GameObject obj in BuildList)

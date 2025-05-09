@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class GridManagerScript : MonoBehaviourSingleton<GridManagerScript>
+    public class GridManagerScript : MonoBehaviourSingletonBase<GridManagerScript>
     {
-        private List<GameObject> placedObjects = new();
+        private List<ItemBase> placedItems = new();
         public bool IsOccupied(Vector2Int cell)
         {
             if (PlayerScript.Instance.LocationInt() == cell)
                 return true;
             if (TileBuilderScript.Instance.GetRegionType(cell) == RegionTypeEnum.Water)
                 return true;
-            return placedObjects
+            return placedItems
                 .Where(obj => obj != null)
                 .Select(obj => obj.GetComponent<ItemBase>())
                 .Where(item => item != null)
@@ -30,14 +30,19 @@ namespace FarmerDemo
             return false;
         }
 
-        public void AddObject(GameObject gameObject)
+        public void AddItem(ItemBase item)
         {
-            placedObjects.Add(gameObject);
+            placedItems.Add(item);
         }
 
-        public void Remove(GameObject gameObject)
+        public void RemoveItem(ItemBase item)
         {
-            placedObjects.Remove(gameObject);
+            placedItems.Remove(item);
+        }
+
+        public ItemBase GetItemAt(Vector2Int location)
+        {
+            return placedItems.Where(p => p.OccupiedTiles.Contains(location)).FirstOrDefault();
         }
     }
 }

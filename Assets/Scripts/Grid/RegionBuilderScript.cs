@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class RegionBuilderScript : MonoBehaviourSingleton<RegionBuilderScript>
+    public class RegionBuilderScript : MonoBehaviourSingletonBase<RegionBuilderScript>
     {
-        private int _regionSize = 5;
+        private int _regionSize = 10;
 
         public void BuildRegion(Vector2Int regionCoords, RegionTypeEnum regionType)
         {
@@ -38,6 +38,8 @@ namespace FarmerDemo
                         ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "BerryBush", out GameObject builtBerryBush);
                     for (int i = 0; i < 3; i++)
                         ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Tree", out GameObject builtTree);
+                    for (int i = 0; i < 1; i++)
+                        ItemBuilderScript.Instance.TryBuildItem(bottomLeft, topRight, "Squirrel", out GameObject builtSquirrel);
                     break;
                 case RegionTypeEnum.Tree:
                     for (int i = 0; i < 3; i++)

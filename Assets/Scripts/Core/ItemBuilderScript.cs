@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FarmerDemo
 {
-    public class ItemBuilderScript : MonoBehaviourSingleton<ItemBuilderScript>
+    public class ItemBuilderScript : MonoBehaviourSingletonBase<ItemBuilderScript>
     {
         private GameObject _prefab;
         public Transform ParentObject;
@@ -50,7 +50,7 @@ namespace FarmerDemo
         private void PlaceObject(GameObject obj)
         {
             obj.transform.SetParent(ParentObject);
-            GridManagerScript.Instance.AddObject(obj);
+            GridManagerScript.Instance.AddItem(obj.GetComponent<ItemBase>());
         }
 
         private Vector2 CalculateVisualCenter(List<Vector2Int> tiles)
